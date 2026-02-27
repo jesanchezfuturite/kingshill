@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King's Hill School | Propuesta Editorial</title>
+
+    <!-- Google Fonts: Libre Baskerville (Títulos) e Inter (Textos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome para Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Estilos Personalizados UI/UX Editoriales -->
+    <style>
+        :root {
+            --primary-guinda: #66061A;
+            --primary-navy: #08122F;
+            --primary-light: #F2F2F2;
+            --secondary-cream: #FFDBB3;
+            --text-dark: #2C3338;
+
+            --font-serif: 'Libre Baskerville', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-serif);
+        }
+
+        /* 1. Top-Bar y Header */
+        .top-bar {
+            background-color: var(--primary-guinda);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 5px 0;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .top-bar a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .top-bar a:hover {
+            color: var(--secondary-cream);
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+            transition: all 0.3s;
+        }
+
+        .navbar-brand img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.4)) brightness(1.1);
+        }
+
+        .nav-link {
+            color: var(--primary-navy) !important;
+            font-weight: 500;
+            margin: 0 0.8rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-guinda);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* 2. Hero Section (Split-Screen) */
+        .hero-split {
+            display: flex;
+            min-height: 85vh;
+            flex-wrap: wrap;
+        }
+
+        .hero-left {
+            flex: 1 1 50%;
+            background-color: var(--primary-navy);
+            display: flex;
+            align-items: center;
+            padding: 4rem 10%;
+            position: relative;
+        }
+
+        .hero-left::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.2));
+            pointer-events: none;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            color: var(--secondary-cream);
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.4rem;
+            font-style: italic;
+            letter-spacing: 1px;
+            margin-bottom: 3rem;
+            border-left: 3px solid var(--primary-guinda);
+            padding-left: 1rem;
+        }
+
+        .hero-right {
+            flex: 1 1 50%;
+            padding: 4rem 3%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            border-radius: 20px 0 20px 0;
+            overflow: hidden;
+            box-shadow: -15px 15px 0px var(--secondary-cream);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 500px;
+        }
+
+        .btn-editorial {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            border: 1px solid var(--secondary-cream);
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-editorial::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--secondary-cream);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-editorial:hover {
+            color: var(--primary-navy);
+        }
+
+        .btn-editorial:hover::before {
+            transform: translateX(0);
+        }
+
+        /* 3. Introducción Institucional (Asimétrica) */
+        .intro-asymmetric {
+            padding: 8rem 0;
+            background-color: var(--primary-light);
+            position: relative;
+        }
+
+        .intro-img-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-img-wrapper img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .intro-text-box {
+            background-color: white;
+            padding: 4rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 2;
+            margin-top: -150px;
+            margin-left: -50px;
+            border-top: 5px solid var(--primary-guinda);
+        }
+
+        .intro-text-box h2 {
+            color: var(--primary-navy);
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-text-box p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 991px) {
+            .intro-text-box {
+                margin-top: -50px;
+                margin-left: 0;
+                padding: 2rem;
+            }
+
+            .hero-left,
+            .hero-right {
+                flex: 1 1 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        /* 4. Propuesta Educativa (Zig-Zag) */
+        .zigzag-section {
+            padding: 6rem 0;
+            background-color: white;
+        }
+
+        .zigzag-row {
+            margin-bottom: 6rem;
+            align-items: center;
+        }
+
+        .zigzag-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .zigzag-img-wrapper {
+            position: relative;
+        }
+
+        .zigzag-img-wrapper img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Decoraciones asimétricas */
+        .zigzag-row:nth-child(odd) .zigzag-img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 50%;
+            height: 50%;
+            border-top: 2px solid var(--primary-guinda);
+            border-left: 2px solid var(--primary-guinda);
+            z-index: -1;
+        }
+
+        .zigzag-row:nth-child(even) .zigzag-img-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 50%;
+            height: 50%;
+            border-bottom: 2px solid var(--primary-navy);
+            border-right: 2px solid var(--primary-navy);
+            z-index: -1;
+        }
+
+        .zigzag-content {
+            padding: 2rem;
+        }
+
+        .zigzag-content h3 {
+            font-size: 2.2rem;
+            color: var(--primary-navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .zigzag-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .zigzag-content ul li {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .zigzag-content ul li::before {
+            content: '■';
+            color: var(--primary-guinda);
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+            top: 4px;
+        }
+
+        /* 5. Divisiones Académicas (Tabs Vue) */
+        .tabs-section {
+            padding: 8rem 0;
+            background-color: var(--primary-light);
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .tabs-section h2 {
+            text-align: center;
+            color: var(--primary-navy);
+            font-size: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .editorial-tabs {
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #ddd;
+            padding-right: 2rem;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            text-align: right;
+            padding: 1.2rem 1rem;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: #888;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-right: 3px solid transparent;
+            margin-right: -2px;
+            /* Superponer borde */
+        }
+
+        .tab-btn:hover {
+            color: var(--primary-navy);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-guinda);
+            border-right-color: var(--primary-guinda);
+            font-weight: 700;
+        }
+
+        .tab-content-wrapper {
+            position: relative;
+            min-height: 500px;
+            padding-left: 2rem;
+        }
+
+        /* Transiciones de Vue para las pestañas */
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-enter-from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .fade-leave-to {
+            opacity: 0;
+            transform: translateY(-20px);
+            position: absolute;
+            top: 0;
+            left: 2rem;
+            width: calc(100% - 2rem);
+        }
+
+        .tab-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .tab-text {
+            padding: 3rem;
+        }
+
+        .tab-text h3 {
+            color: var(--primary-navy);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tab-text p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .editorial-tabs {
+                flex-direction: row;
+                flex-wrap: wrap;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+                padding-right: 0;
+                padding-bottom: 1rem;
+                margin-bottom: 2rem;
+                justify-content: center;
+            }
+
+            .tab-btn {
+                text-align: center;
+                border-right: none;
+                border-bottom: 3px solid transparent;
+                margin-right: 0;
+                margin-bottom: -1px;
+                font-size: 1.2rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .tab-btn.active {
+                border-right-color: transparent;
+                border-bottom-color: var(--primary-guinda);
+            }
+
+            .tab-content-wrapper {
+                padding-left: 0;
+            }
+
+            .fade-leave-to {
+                left: 0;
+                width: 100%;
+            }
+        }
+
+        /* 6. Banner Parallax */
+        .parallax-banner {
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=2000');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 10rem 0;
+            text-align: center;
+        }
+
+        .parallax-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(8, 18, 47, 0.85);
+            /* Azul Marino con opacidad */
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .parallax-content h2 {
+            color: var(--secondary-cream);
+            font-size: 3.5rem;
+            line-height: 1.4;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .parallax-content h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* 7. Footer Minimalista */
+        .footer-minimal {
+            background-color: var(--primary-navy);
+            color: white;
+            padding: 6rem 0 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Marca de agua GIGANTE */
+        .footer-watermark {
+            position: absolute;
+            bottom: -10%;
+            right: -5%;
+            width: 60%;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-minimal h5 {
+            color: var(--secondary-cream);
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-links,
+        .footer-contact {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer-links li,
+        .footer-contact li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a,
+        .footer-contact li {
+            color: #b0b5c1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact i {
+            color: var(--secondary-cream);
+            width: 25px;
+        }
+
+        .btn-footer {
+            background-color: var(--primary-guinda);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: none;
+            transition: background-color 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+
+        .btn-footer:hover {
+            background-color: var(--secondary-red);
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #b0b5c1;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 1. Top-Bar de Utilidad -->
+        <div class="top-bar d-none d-md-block">
+            <div class="container d-flex justify-content-end align-items-center">
+                <span class="me-4"><i class="fa-solid fa-phone me-2"></i> (81) 8989-5777</span>
+                <span><i class="fa-solid fa-envelope me-2"></i> contacto@colegiomaranatha.edu.mx</span>
+            </div>
+        </div>
+
+        <!-- Header Principal -->
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <!-- LOGO PRINCIPAL (H) -->
+                <a class="navbar-brand" href="#home" aria-label="Home">
+                    <img src="img/KHS-h.png" alt="King's Hill Logo Principal">
+                </a>
+
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#editorialNav" aria-controls="editorialNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars" style="color: var(--primary-navy); font-size: 1.5rem;"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="editorialNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#oferta">Oferta Educativa</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 2. Hero Section (Split-Screen) -->
+        <section id="home" class="hero-split">
+            <div class="hero-left">
+                <div class="hero-content">
+                    <h1>Caminando en la<br>Visión del Señor</h1>
+                    <p>Habacuc 2:2</p>
+                    <a href="#nosotros" class="btn-editorial">Conoce más</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="video-container">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_25fps.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Introducción Institucional (Tarjetas Superpuestas) -->
+        <section id="nosotros" class="intro-asymmetric">
+            <div class="container">
+                <div class="row align-items-start">
+                    <div class="col-lg-7">
+                        <div class="intro-img-wrapper">
+                            <!-- Imagen de la escuela (Unsplash/Edificio) -->
+                            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200"
+                                alt="Edificio Escolar" class="shadow-lg">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 offset-lg-6">
+                        <div class="intro-text-box">
+                            <h2>King's Hill School</h2>
+                            <p>
+                                Una institución educativa cristiana con 35 años de experiencia formando generaciones con
+                                excelencia académica y fundamentos bíblicos sólidos. Acompañamos a cada alumno en su
+                                crecimiento intelectual, espiritual y personal, dentro de un entorno bilingüe que amplía
+                                su visión y fortalece su preparación. Con incorporación oficial ante la SEP y la UANL,
+                                educamos para que sean establecidos en verdad y aprendan a caminar en ella.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Propuesta Educativa (Layout Zig-Zag) -->
+        <section class="zigzag-section">
+            <div class="container">
+                <!-- Bloque 1 (Img Izq, Txt Der) -->
+                <div class="row zigzag-row">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="zigzag-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800"
+                                alt="Excelencia Académica y Tecnología">
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="zigzag-content">
+                            <h3>Innovación y Excelencia</h3>
+                            <ul>
+                                <li>Excelencia académica bilingüe que abre puertas al mundo.</li>
+                                <li>Uso responsable y productivo de la tecnología adecuado a cada edad.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloque 2 (Txt Izq, Img Der) -->
+                <div class="row zigzag-row flex-lg-row-reverse">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="zigzag-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1645060098312-1aea5bb1cac3?auto=format&fit=crop&q=80&w=800"
+                                alt="Formación Cristiana">
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="zigzag-content pe-lg-4">
+                            <h3>Identidad y Fe</h3>
+                            <ul>
+                                <li>Formación cristiana intencional y auténtica.</li>
+                                <li>Acompañamiento espiritual para guiar corazones con propósito.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloque 3 (Img Izq, Txt Der) -->
+                <div class="row zigzag-row">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="zigzag-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=800"
+                                alt="Entorno y Aprendizaje">
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="zigzag-content">
+                            <h3>Entorno Seguro</h3>
+                            <ul>
+                                <li>Metodologías activas y aprendizaje verdaderamente significativo.</li>
+                                <li>Ambiente cálido, seguro y con atención personalizada por docentes capacitados.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Divisiones Académicas (Vue Tabs) -->
+        <section id="oferta" class="tabs-section">
+            <div class="container">
+                <h2>Nuestra Oferta Educativa</h2>
+                <div class="row">
+                    <!-- Pestañas -->
+                    <div class="col-md-3">
+                        <div class="editorial-tabs">
+                            <button v-for="(division, index) in divisionesData" :key="'btn-'+index"
+                                :class="['tab-btn', { active: activeTab === index }]" @click="activeTab = index">
+                                {{ division.name }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Contenedor de Contenido -->
+                    <div class="col-md-9">
+                        <div class="tab-content-wrapper">
+                            <transition name="fade">
+                                <div class="tab-card" :key="activeTab">
+                                    <img :src="divisionesData[activeTab].image" :alt="divisionesData[activeTab].name"
+                                        class="tab-img">
+                                    <div class="tab-text">
+                                        <h3>{{ divisionesData[activeTab].name }}</h3>
+                                        <p>{{ divisionesData[activeTab].desc }}</p>
+                                    </div>
+                                </div>
+                            </transition>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Banner Destacado (Parallax) -->
+        <section class="parallax-banner">
+            <div class="parallax-overlay"></div>
+            <div class="container parallax-content">
+                <h2>"Educamos mentes con excelencia, formamos corazones con fe y guiamos vidas con propósito."</h2>
+            </div>
+        </section>
+
+        <!-- 7. Footer Minimalista -->
+        <footer id="contacto" class="footer-minimal" style="padding-bottom: 0;">
+            <!-- MARCA DE AGUA LADO DERECHO (OPACIDAD BAJA) -->
+            <img src="img/KHS-f.png" alt="Watermark" class="footer-watermark">
+
+            <div class="container footer-content" style="padding-bottom: 4rem;">
+                <div class="row gy-5">
+
+                    <div class="col-lg-4 col-md-12 pe-lg-5">
+                        <h4
+                            style="color: white; font-family: var(--font-sans); font-weight: 700; font-size: 1.5rem; margin-bottom: 1rem;">
+                            King's Hill School</h4>
+                        <p style="color: #b0b5c1; font-size: 1.05rem; line-height: 1.6;">
+                            Establecidos en la verdad, educamos integralmente para capacitar líderes con visión y
+                            valores para las próximas generaciones.
+                        </p>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 offset-lg-1">
+                        <h5>Enlaces</h5>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#nosotros">Nosotros</a></li>
+                            <li><a href="#oferta">Oferta Educativa</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4">
+                        <h5>Contacto</h5>
+                        <ul class="footer-contact">
+                            <li><i class="fa-solid fa-location-dot"></i> Alcaldías 399, Monterrey</li>
+                            <li><i class="fa-solid fa-phone"></i> (81) 8989-5777</li>
+                            <li><i class="fa-solid fa-phone"></i> (81) 8040-5605</li>
+                            <li><i class="fa-solid fa-envelope"></i> contacto@colegiomaranatha.edu.mx</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 text-md-end text-lg-start">
+                        <h5>Admisiones</h5>
+                        <a href="#contacto" class="btn-footer">Ciclo 2026</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer Bottom Bar (Blanca) -->
+            <div style="background-color: white; padding: 1.5rem 0; margin-top: 1rem;">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                            <img src="img/KHS-f.png" alt="King's Hill Logo Secundario"
+                                style="height: 60px; width: auto; max-width: 100%; object-fit: contain;">
+                        </div>
+                        <div
+                            class="col-md-8 text-center text-md-end d-flex justify-content-center justify-content-md-end align-items-center">
+                            <p class="mb-0 me-4"
+                                style="color: var(--primary-navy); font-weight: 500; font-size: 0.95rem;">&copy; 2026
+                                King's Hill School. Todos los derechos reservados.</p>
+                            <div class="social-icons d-flex">
+                                <a href="#" style="color: var(--primary-navy);" class="me-3 fs-5"><i
+                                        class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#" style="color: var(--primary-navy);" class="me-3 fs-5"><i
+                                        class="fa-brands fa-instagram"></i></a>
+                                <a href="#" style="color: var(--primary-navy);" class="fs-5"><i
+                                        class="fa-brands fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vue 3 Lógica para Tabs -->
+    <script>
+        const { createApp, ref } = Vue;
+
+        createApp({
+            setup() {
+                // Estado activo para la pestaña
+                const activeTab = ref(0);
+
+                // Datos estructurados para las divisiones académicas
+                const divisionesData = ref([
+                    {
+                        name: 'Maternal',
+                        desc: 'Las primeras etapas del desarrollo son clave. Fomentamos un entorno de cuidado, estimulación temprana y amor cristiano para dar confianza a los más pequeños.',
+                        image: 'https://images.pexels.com/photos/8612921/pexels-photo-8612921.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        name: 'Kinder Garden',
+                        desc: 'Desarrollamos la curiosidad innata de los niños a través del juego, con dinámicas de socialización y un acercamiento cálido a sus primeros conocimientos y valores.',
+                        image: 'https://images.unsplash.com/photo-1587616211892-f743fcca64f9?auto=format&fit=crop&q=80&w=1200'
+                    },
+                    {
+                        name: 'Primaria',
+                        desc: 'Consolidamos habilidades lectoras, matemáticas y el idioma inglés. Proveemos un programa integral enfocado en la vivencia diaria de la fe y la responsabilidad.',
+                        image: 'https://images.pexels.com/photos/8926639/pexels-photo-8926639.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        name: 'Secundaria',
+                        desc: 'Acompañamos a los adolescentes en su formación para la vida. Incentivamos el pensamiento crítico, la disciplina académica y una sólida identidad personal.',
+                        image: 'https://images.pexels.com/photos/5211478/pexels-photo-5211478.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    },
+                    {
+                        name: 'Preparatoria (UANL)',
+                        desc: 'Con incorporación al programa de la UANL, preparamos de forma preuniversitaria a jóvenes líderes, impulsándolos a impactar el mundo con conocimientos competitivos y alta ética cristiana.',
+                        image: 'https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                    }
+                ]);
+
+                return {
+                    activeTab,
+                    divisionesData
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>
