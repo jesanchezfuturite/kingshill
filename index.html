@@ -474,7 +474,7 @@
             <div class="container">
                 <a class="navbar-brand" href="#home" aria-label="Home">
                     <!-- LOGO PRINCIPAL -->
-                    <img src="img/KHS-h.png" alt="King's Hill Logo Principal"
+                    <img src="assets/img/KHS-h.webp" alt="King's Hill Logo Principal"
                         style="height: 90px; width: auto; filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.4)) brightness(1.1);">
                 </a>
 
@@ -530,8 +530,7 @@
         <!-- 2. Hero Section (Inmersivo) -->
         <section id="home" class="hero">
             <video autoplay muted loop playsinline>
-                <source src="https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_25fps.mp4"
-                    type="video/mp4">
+                <source src="assets/videos/horizontal_Maranatha.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
             <div class="container hero-content">
@@ -704,7 +703,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-                    <img src="img/KHS-f.png" alt="King's Hill Logo Secundario"
+                    <img src="assets/img/KHS-f.webp" alt="King's Hill Logo Secundario"
                         style="height: 60px; width: auto; max-width: 100%; object-fit: contain;">
                 </div>
                 <div class="col-md-8 text-center text-md-end">
@@ -754,19 +753,26 @@
 
                 // Data section 6
                 const divisionesData = ref([
-                    { name: 'Maternal', image: 'https://images.pexels.com/photos/8612921/pexels-photo-8612921.jpeg?auto=compress&cs=tinysrgb&w=800' },
-                    { name: 'Kinder Garden', image: 'https://images.unsplash.com/photo-1587616211892-f743fcca64f9?auto=format&fit=crop&q=80&w=800' },
-                    { name: 'Primaria', image: 'https://images.pexels.com/photos/8926639/pexels-photo-8926639.jpeg?auto=compress&cs=tinysrgb&w=800' },
-                    { name: 'Secundaria', image: 'https://images.pexels.com/photos/5211478/pexels-photo-5211478.jpeg?auto=compress&cs=tinysrgb&w=800' },
-                    { name: 'Preparatoria incorporada a la UANL', image: 'https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg?auto=compress&cs=tinysrgb&w=800' }
+                    { name: 'Maternal', image: 'assets/img/Maternal.webp' },
+                    { name: 'Kinder Garden', image: 'assets/img/Preescolar-02.webp' },
+                    { name: 'Primaria', image: 'assets/img/Primaria-01.webp' },
+                    { name: 'Secundaria', image: 'assets/img/Secundaria-01.webp' },
+                    { name: 'Preparatoria incorporada a la UANL', image: 'assets/img/Preparatoria-01.webp' }
                 ]);
 
                 // Data section 8
                 const galeriaData = ref([
-                    { src: 'https://images.pexels.com/photos/256455/pexels-photo-256455.jpeg?auto=compress&cs=tinysrgb&w=1200', alt: 'Biblioteca Escolar' },
-                    { src: 'https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=1200', alt: 'Cancha Deportiva' },
-                    { src: 'https://images.pexels.com/photos/301920/pexels-photo-301920.jpeg?auto=compress&cs=tinysrgb&w=1200', alt: 'Aula Interactiva' },
-                    { src: 'https://images.pexels.com/photos/289737/pexels-photo-289737.jpeg?auto=compress&cs=tinysrgb&w=1200', alt: 'Pasillos y Entorno' }
+                    { src: 'assets/img/Actividades-01.webp', alt: 'Actividades Escolares' },
+                    { src: 'assets/img/Actividades-02.webp', alt: 'Actividades Escolares' },
+                    { src: 'assets/img/Auditorio-01.webp', alt: 'Auditorio' },
+                    { src: 'assets/img/Biblioteca-01.webp', alt: 'Biblioteca Escolar' },
+                    { src: 'assets/img/Cafeteria-01.webp', alt: 'Cafetería' },
+                    { src: 'assets/img/Cancha-03.webp', alt: 'Cancha Deportiva' },
+                    { src: 'assets/img/Computacion-02.webp', alt: 'Aula de Computación' },
+                    { src: 'assets/img/Gimnasio-01.webp', alt: 'Gimnasio' },
+                    { src: 'assets/img/Laboratorio-02.webp', alt: 'Laboratorio' },
+                    { src: 'assets/img/Pasillo-02.webp', alt: 'Pasillos y Entorno' },
+                    { src: 'assets/img/Polivalente.webp', alt: 'Aula Polivalente' },
                 ]);
 
                 return {
