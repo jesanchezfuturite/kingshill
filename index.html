@@ -123,20 +123,21 @@
             }
         }
 
-        /* 2. Hero Section (Inmersivo con Video) */
-        .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
+        /* 2. Hero Section (Split Layout) */
+        .hero-split {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
+            min-height: 100vh;
+            flex-wrap: wrap;
+        }
+
+        .hero-video-container {
+            width: 50%;
+            position: relative;
+            min-height: 50vh;
             overflow: hidden;
         }
 
-        .hero video {
+        .hero-video-container video {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -145,40 +146,79 @@
             width: auto;
             height: auto;
             transform: translateX(-50%) translateY(-50%);
-            z-index: -2;
             object-fit: cover;
         }
 
-        .hero-overlay {
+        .hero-text-container {
+            width: 50%;
+            background-color: #4A0210;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            padding-top: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-icon {
             position: absolute;
-            top: 0;
-            left: 0;
+            bottom: 0;
+            right: 0;
+            width: clamp(350px, 50vw, 800px);
+            transform: translate(35%, 35%);
+            opacity: 0.25;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-content-inner {
+            max-width: 550px;
+            margin: 0 auto;
             width: 100%;
-            height: 100%;
-            /* Degradado desde Azul Marino a Guinda */
-            background: linear-gradient(135deg, rgba(8, 18, 47, 0.75) 0%, rgba(102, 6, 26, 0.65) 100%);
-            z-index: -1;
-        }
-
-        .hero-content {
             animation: fadeIn 1.5s ease-out;
-            padding: 0 15px;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero-content h1 {
-            font-size: 4.5rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-content p {
-            font-size: 1.8rem;
-            font-weight: 300;
-            font-style: italic;
+        .hero-title {
+            font-size: 4.2rem;
+            font-weight: 400; /* NO BOLD */
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
             color: var(--secondary-cream);
-            letter-spacing: 2px;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 300; /* NO BOLD */
+            font-style: italic;
+            color: var(--primary-light);
+            border-left: 2px solid var(--secondary-red);
+            padding-left: 15px;
+            margin-bottom: 2.5rem;
+            letter-spacing: 1px;
+            font-family: var(--font-sans);
+        }
+
+        .btn-hero-outline {
+            display: inline-block;
+            border: 1px solid var(--primary-light);
+            color: var(--primary-light);
+            padding: 0.8rem 2.5rem;
+            text-transform: uppercase;
+            font-weight: 400; /* NO BOLD */
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-family: var(--font-sans);
+            align-self: flex-start;
+        }
+
+        .btn-hero-outline:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-guinda);
         }
 
         @keyframes fadeIn {
@@ -186,7 +226,6 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -197,12 +236,25 @@
         .intro-section {
             background-color: var(--primary-light);
             padding: 7rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-bg-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: clamp(200px, 25vw, 450px);
+            transform: translate(-25%, -25%);
+            opacity: 0.25;
+            z-index: 0;
+            pointer-events: none;
         }
 
         .intro-title {
             color: var(--primary-navy);
             margin-bottom: 2rem;
-            font-weight: 700;
+            font-weight: 400;
             font-size: 3rem;
         }
 
@@ -253,29 +305,11 @@
             font-size: 1.25rem;
             color: var(--primary-navy);
             font-family: var(--font-sans);
-            font-weight: 600;
+            font-weight: 400;
             line-height: 1.4;
         }
 
-        /* 5. Banner Destacado */
-        .banner-destacado {
-            background-color: var(--primary-navy);
-            background-image: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-royal) 100%);
-            color: white;
-            padding: 6rem 0;
-            text-align: center;
-            position: relative;
-        }
-
-        .banner-destacado h2 {
-            font-size: 2.8rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            font-weight: 400;
-            line-height: 1.5;
-            text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-            color: var(--secondary-cream);
-        }
+        /* 5. Banner Destacado (Removido e integrado en Galería) */
 
         /* 6. Divisiones Académicas */
         .divisiones-section {
@@ -284,12 +318,26 @@
         }
 
         .division-card {
-            position: relative;
-            border-radius: 15px;
+            border-radius: 0;
             overflow: hidden;
-            height: 400px;
+            background-color: var(--primary-navy);
             cursor: pointer;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .division-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .division-img-wrapper {
+            position: relative;
+            flex-grow: 1;
+            overflow: hidden;
         }
 
         .division-bg {
@@ -303,44 +351,38 @@
             transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .division-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(8, 18, 47, 0.95) 0%, rgba(8, 18, 47, 0.1) 80%);
-            display: flex;
-            align-items: flex-end;
-            padding: 2.5rem;
-            transition: background 0.5s ease;
-        }
-
         .division-card:hover .division-bg {
             transform: scale(1.1);
         }
 
-        .division-card:hover .division-overlay {
-            background: linear-gradient(to top, rgba(102, 6, 26, 0.95) 0%, rgba(102, 6, 26, 0.2) 80%);
+        .division-strip {
+            background-color: var(--primary-navy);
+            padding: 1.5rem;
+            text-align: center;
+            transition: background-color 0.4s ease;
+        }
+
+        .division-card:hover .division-strip {
+            background-color: var(--primary-guinda);
         }
 
         .division-title {
             color: white;
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin: 0;
-            font-weight: 700;
-            transform: translateY(15px);
-            transition: transform 0.4s ease, color 0.4s ease;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: 1px;
+            transition: color 0.4s ease;
         }
 
         .division-card:hover .division-title {
-            transform: translateY(0);
             color: var(--secondary-cream);
         }
 
         /* 7. Call to Action (Admisiones) */
         .cta-section {
-            padding: 6rem 0;
+            padding: 3.5rem 0;
             text-align: center;
             background-color: white;
         }
@@ -351,7 +393,7 @@
             padding: 1.2rem 3.5rem;
             font-size: 1.3rem;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
@@ -375,9 +417,10 @@
         }
 
         .carousel-item img {
-            height: 600px;
+            width: 100%;
+            aspect-ratio: 1/1;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 0;
         }
 
         .carousel-indicators [data-bs-target] {
@@ -398,7 +441,7 @@
             color: var(--secondary-cream);
             margin-bottom: 1.5rem;
             font-family: var(--font-serif);
-            font-weight: 700;
+            font-weight: 400;
             font-size: 1.4rem;
         }
 
@@ -442,22 +485,28 @@
         }
 
         /* Responsive Global */
+        @media (max-width: 991px) {
+            .hero-split {
+                flex-direction: column-reverse;
+            }
+            .hero-video-container, .hero-text-container {
+                width: 100%;
+            }
+        }
         @media (max-width: 768px) {
-            .hero-content h1 {
+            .hero-title {
                 font-size: 3rem;
             }
 
-            .hero-content p {
-                font-size: 1.3rem;
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-text-container {
+                padding: 4rem 2rem;
             }
 
-            .banner-destacado h2 {
-                font-size: 1.8rem;
-            }
 
-            .carousel-item img {
-                height: 400px;
-            }
 
             .navbar.transparent {
                 background-color: var(--primary-navy) !important;
@@ -471,7 +520,7 @@
     <div id="app">
         <!-- 1. Header / Barra de Navegación -->
         <nav :class="['navbar', 'navbar-expand-lg', 'fixed-top', isScrolled ? 'scrolled' : 'transparent']">
-            <div class="container">
+            <div class="container-fluid px-4 px-lg-5">
                 <a class="navbar-brand" href="#home" aria-label="Home">
                     <!-- LOGO PRINCIPAL -->
                     <img src="assets/img/KHS-h.webp" alt="King's Hill Logo Principal"
@@ -527,21 +576,27 @@
             </div>
         </nav>
 
-        <!-- 2. Hero Section (Inmersivo) -->
-        <section id="home" class="hero">
-            <video autoplay muted loop playsinline>
-                <source src="assets/videos/horizontal_Maranatha.mp4" type="video/mp4">
-            </video>
-            <div class="hero-overlay"></div>
-            <div class="container hero-content">
-                <h1>Caminando en la Visión del Señor</h1>
-                <p>Habacuc 2:2</p>
+        <!-- 2. Hero Section (Split) -->
+        <section id="home" class="hero-split">
+            <div class="hero-video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/videos/colegio_kinghill.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="hero-text-container">
+                <img src="assets/iconos/Recurso 1.png" alt="Decoración corporativa" class="hero-bg-icon">
+                <div class="hero-content-inner">
+                    <h1 class="hero-title"><span style="color: var(--primary-light);">Caminando</span><br>en la Visión<br>del Señor</h1>
+                    <p class="hero-subtitle">Habacuc 2:2</p>
+                    <a href="#contacto" class="btn-hero-outline">CONOCE MÁS</a>
+                </div>
             </div>
         </section>
 
         <!-- 3. Sección de Introducción Institucional -->
         <section id="nosotros" class="intro-section text-center">
-            <div class="container">
+            <img src="assets/iconos/Recurso 2.png" alt="Decoración corporativa" class="intro-bg-icon">
+            <div class="container" style="position: relative; z-index: 1;">
                 <h2 class="intro-title">King's Hill School</h2>
                 <p class="intro-text">
                     King's Hill School es una institución educativa cristiana con 35 años de experiencia formando
@@ -556,7 +611,7 @@
         <!-- 4. Propuesta Educativa (Cuadrícula Vue) -->
         <section id="propuesta" class="propuesta-section">
             <div class="container">
-                <h2 class="text-center mb-5" style="color: var(--primary-navy); font-weight: 700;">Propuesta Educativa
+                <h2 class="text-center mb-5" style="color: var(--primary-navy); font-weight: 400;">Propuesta Educativa
                 </h2>
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-4" v-for="(item, index) in propuestaData" :key="index">
@@ -571,24 +626,21 @@
             </div>
         </section>
 
-        <!-- 5. Banner Destacado -->
-        <section class="banner-destacado">
-            <div class="container">
-                <h2>"Educamos mentes con excelencia, formamos corazones con fe y guiamos vidas con propósito."</h2>
-            </div>
-        </section>
+        <!-- 5. Banner Destacado (Integrado en Galería) -->
 
         <!-- 6. Divisiones Académicas (Tarjetas Vue) -->
         <section id="oferta" class="divisiones-section">
             <div class="container">
-                <h2 class="text-center mb-5" style="color: var(--primary-navy); font-weight: 700;">Nuestra Oferta
+                <h2 class="text-center mb-5" style="color: var(--primary-navy); font-weight: 400;">Nuestra Oferta
                     Educativa</h2>
                 <div class="row g-4 justify-content-center">
                     <div v-for="(division, index) in divisionesData" :key="index"
                         :class="index >= 3 ? 'col-md-6 col-lg-6' : 'col-md-6 col-lg-4'">
                         <div class="division-card">
-                            <div class="division-bg" :style="{ backgroundImage: 'url(' + division.image + ')' }"></div>
-                            <div class="division-overlay">
+                            <div class="division-img-wrapper">
+                                <div class="division-bg" :style="{ backgroundImage: 'url(' + division.image + ')' }"></div>
+                            </div>
+                            <div class="division-strip">
                                 <h3 class="division-title">{{ division.name }}</h3>
                             </div>
                         </div>
@@ -600,47 +652,59 @@
         <!-- 7. Call to Action (Admisiones) -->
         <section id="admisiones" class="cta-section">
             <div class="container">
-                <h2 class="mb-3" style="color: var(--primary-navy); font-weight: 700; font-size: 2.5rem;">Sé parte de
+                <h2 class="mb-3" style="color: var(--primary-navy); font-weight: 400; font-size: 2.5rem;">Sé parte de
                     nuestra comunidad</h2>
-                <p class="mb-5 text-muted" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Ofrecemos
+                <p class="mb-4 text-muted" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Ofrecemos
                     educación de nivel internacional cimentada firmemente en valores cristianos.</p>
                 <a href="#contacto" class="btn-cta">Admisiones 2026</a>
             </div>
         </section>
 
-        <!-- 8. Galería de Instalaciones (Carrusel Vue + Bootstrap) -->
+        <!-- 8. Instalaciones (Split Layout) -->
         <section id="instalaciones" class="galeria-section">
             <div class="container">
-                <h2 class="text-center mb-5" style="color: var(--primary-navy); font-weight: 700;">Instalaciones de
-                    Primer Nivel</h2>
+                <div class="row align-items-center gy-5">
+                    <!-- Lado Izquierdo: Galería Carrusel Cuadrada -->
+                    <div class="col-lg-6">
+                        <div id="schoolGallery" class="carousel slide carousel-fade shadow-lg" data-bs-ride="carousel"
+                            style="border-radius: 0; overflow: hidden;">
+                            <div class="carousel-indicators">
+                                <button v-for="(img, idx) in galeriaData" :key="'indicator-' + idx" type="button"
+                                    data-bs-target="#schoolGallery" :data-bs-slide-to="idx" :class="{ active: idx === 0 }"
+                                    :aria-current="idx === 0 ? 'true' : 'false'" :aria-label="'Slide ' + (idx + 1)"></button>
+                            </div>
 
-                <div id="schoolGallery" class="carousel slide carousel-fade shadow-lg" data-bs-ride="carousel"
-                    style="border-radius: 12px; overflow: hidden; max-width: 1000px; margin: 0 auto;">
-                    <div class="carousel-indicators">
-                        <button v-for="(img, idx) in galeriaData" :key="'indicator-' + idx" type="button"
-                            data-bs-target="#schoolGallery" :data-bs-slide-to="idx" :class="{ active: idx === 0 }"
-                            :aria-current="idx === 0 ? 'true' : 'false'" :aria-label="'Slide ' + (idx + 1)"></button>
-                    </div>
+                            <div class="carousel-inner">
+                                <div v-for="(img, idx) in galeriaData" :key="'slide-' + idx"
+                                    :class="['carousel-item', { active: idx === 0 }]" data-bs-interval="4000">
+                                    <img :src="img.src" class="d-block w-100" :alt="img.alt">
+                                </div>
+                            </div>
 
-                    <div class="carousel-inner">
-                        <div v-for="(img, idx) in galeriaData" :key="'slide-' + idx"
-                            :class="['carousel-item', { active: idx === 0 }]" data-bs-interval="4000">
-                            <img :src="img.src" class="d-block w-100" :alt="img.alt">
+                            <button class="carousel-control-prev" type="button" data-bs-target="#schoolGallery"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"
+                                    style="filter: drop-shadow(0px 0px 5px black);"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#schoolGallery"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"
+                                    style="filter: drop-shadow(0px 0px 5px black);"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                            </button>
                         </div>
                     </div>
 
-                    <button class="carousel-control-prev" type="button" data-bs-target="#schoolGallery"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"
-                            style="filter: drop-shadow(0px 0px 5px black);"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#schoolGallery"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"
-                            style="filter: drop-shadow(0px 0px 5px black);"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
+                    <!-- Lado Derecho: Textos y Título -->
+                    <div class="col-lg-6">
+                        <div class="ps-lg-5 text-center text-lg-start">
+                            <h4 style="color: var(--primary-navy); font-weight: 400; text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin-bottom: 2rem; font-family: var(--font-sans);">Instalaciones de Primer Nivel</h4>
+                            <h2 style="color: var(--primary-guinda); font-family: var(--font-serif); font-weight: 400; font-size: 2.5rem; line-height: 1.4; font-style: italic;">
+                                "Educamos mentes con excelencia, formamos corazones con fe y guiamos vidas con propósito."
+                            </h2>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -651,9 +715,7 @@
                 <div class="row justify-content-between gy-5">
 
                     <div class="col-lg-4 col-md-6">
-                        <h4
-                            style="color: white; font-family: var(--font-sans); font-weight: 700; font-size: 1.5rem; margin-bottom: 1rem;">
-                            King's Hill School</h4>
+                        <img src="assets/iconos/KHS - Principal Blanco.svg" alt="King's Hill School" style="height: 70px; width: auto; margin-bottom: 1.5rem; display: block;">
                         <p class="mt-3">Acompañando a cada alumno en su crecimiento intelectual, espiritual y personal
                             en un entorno seguro e inspirador.</p>
                         <div class="social-icons mt-4">
