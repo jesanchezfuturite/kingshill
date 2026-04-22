@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King's Hill School | Excelencia Educativa Cristiana</title>
+
+    <!-- Google Fonts: Libre Baskerville (Títulos) e Inter (Textos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome para Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Vue 3 CDN (Global Build) -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Estilos Personalizados UI/UX -->
+    <style>
+        /* Variables de Marca (Brandbook) */
+        :root {
+            --primary-guinda: #66061A;
+            --primary-navy: #08122F;
+            --primary-light: #F2F2F2;
+            --secondary-red: #A61723;
+            --secondary-cream: #FFDBB3;
+            --secondary-royal: #001F56;
+
+            --font-serif: 'Libre Baskerville', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        /* Resets & Body Generales */
+        body {
+            font-family: var(--font-sans);
+            color: #333;
+            background-color: var(--primary-light);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-serif);
+        }
+
+        /* 1. Header & Navbar */
+        .navbar {
+            transition: background-color 0.4s ease-in-out, padding 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            padding: 1.2rem 0;
+        }
+
+        .navbar.transparent {
+            background-color: var(--primary-navy) !important;
+        }
+
+        .navbar.scrolled {
+            background-color: var(--primary-navy) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 0.6rem 0;
+        }
+
+        .navbar-brand img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-cream);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-item:hover,
+        .dropdown-item:active {
+            background-color: var(--primary-light);
+            color: var(--primary-guinda);
+        }
+
+        @media (min-width: 992px) {
+            .nav-item.dropdown:hover .dropdown-menu {
+                display: block;
+                margin-top: 0;
+            }
+        }
+
+        /* 2. Hero Section (Split Layout) */
+        .hero-split {
+            display: flex;
+            min-height: 100vh;
+            flex-wrap: wrap;
+        }
+
+        .hero-video-container {
+            width: 50%;
+            position: relative;
+            min-height: 50vh;
+            overflow: hidden;
+        }
+
+        .hero-video-container video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+        }
+
+        .hero-text-container {
+            width: 50%;
+            background-color: #4A0210;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            padding-top: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-icon {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: clamp(250px, 35vw, 600px);
+            transform: translate(35%, 35%);
+            opacity: 0.25;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-content-inner {
+            max-width: 550px;
+            margin: 0 auto;
+            width: 100%;
+            animation: fadeIn 1.5s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 4.2rem;
+            font-weight: 400; /* NO BOLD */
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-cream);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 300; /* NO BOLD */
+            font-style: italic;
+            color: var(--primary-light);
+            border-left: 2px solid var(--secondary-red);
+            padding-left: 15px;
+            margin-bottom: 2.5rem;
+            letter-spacing: 1px;
+            font-family: var(--font-sans);
+        }
+
+        .btn-hero-outline {
+            display: inline-block;
+            border: 1px solid var(--primary-light);
+            color: var(--primary-light);
+            padding: 0.8rem 2.5rem;
+            text-transform: uppercase;
+            font-weight: 400; /* NO BOLD */
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-family: var(--font-sans);
+            align-self: flex-start;
+        }
+
+        .btn-hero-outline:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-guinda);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 3. Introducción Institucional */
+        .intro-section {
+            background-color: var(--primary-light);
+            padding: 7rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-bg-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: clamp(200px, 25vw, 450px);
+            transform: translate(-25%, -25%);
+            opacity: 0.25;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .intro-title {
+            color: var(--primary-navy);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            font-size: 3rem;
+        }
+
+        .intro-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #4a4a4a;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* 4. Propuesta Educativa */
+        .propuesta-section {
+            padding: 6rem 0;
+            background-color: #ffffff;
+        }
+
+        .propuesta-card {
+            background: var(--primary-light);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            height: 100%;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .propuesta-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        .propuesta-icon {
+            font-size: 3.5rem;
+            color: var(--primary-guinda);
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .propuesta-card:hover .propuesta-icon {
+            color: var(--secondary-royal);
+        }
+
+        .propuesta-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary-navy);
+            font-family: var(--font-sans);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* 5. Banner Destacado (Removido e integrado en Galería) */
+
+        /* 6. Divisiones Académicas */
+        .divisiones-section {
+            padding: 7rem 0;
+            background-color: var(--primary-light);
+        }
+
+        .division-card {
+            border-radius: 0;
+            overflow: hidden;
+            background-color: var(--primary-navy);
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .division-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .division-img-wrapper {
+            position: relative;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .division-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .division-card:hover .division-bg {
+            transform: scale(1.1);
+        }
+
+        .division-strip {
+            background-color: var(--primary-navy);
+            padding: 1.5rem;
+            text-align: center;
+            transition: background-color 0.4s ease;
+        }
+
+        .division-card:hover .division-strip {
+            background-color: var(--primary-guinda);
+        }
+
+        .division-title {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: 1px;
+            transition: color 0.4s ease;
+        }
+
+        .division-card:hover .division-title {
+            color: var(--secondary-cream);
+        }
+
+        /* 7. Call to Action (Admisiones) */
+        .cta-section {
+            padding: 3.5rem 0;
+            text-align: center;
+            background-color: white;
+        }
+
+        .btn-cta {
+            background-color: var(--primary-guinda);
+            color: white;
+            padding: 1.2rem 3.5rem;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-guinda);
+            box-shadow: 0 8px 15px rgba(102, 6, 26, 0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-cta:hover {
+            background-color: transparent;
+            color: var(--primary-guinda);
+            box-shadow: 0 15px 25px rgba(102, 6, 26, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* 8. Galería de Instalaciones */
+        .galeria-section {
+            padding: 6rem 0;
+            background-color: var(--primary-light);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        .carousel-indicators [data-bs-target] {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--secondary-cream);
+        }
+
+        /* 9. Footer */
+        .footer {
+            background-color: var(--primary-navy);
+            color: white;
+            padding: 5rem 0 2rem 0;
+        }
+
+        .footer h4 {
+            color: var(--secondary-cream);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-serif);
+            font-weight: 400;
+            font-size: 1.4rem;
+        }
+
+        .footer p,
+        .footer a {
+            color: #d1d5db;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .footer-logo {
+            max-width: 220px;
+            margin-bottom: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            /* placeholder visibility */
+            border-radius: 5px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-right: 0.8rem;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-guinda);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Global */
+        @media (max-width: 991px) {
+            .hero-split {
+                flex-direction: column-reverse;
+            }
+            .hero-video-container, .hero-text-container {
+                width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-text-container {
+                padding: 4rem 2rem;
+            }
+
+
+
+            .navbar.transparent {
+                background-color: var(--primary-navy) !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 1. Header / Barra de Navegación -->
+        <nav :class="['navbar', 'navbar-expand-lg', 'fixed-top', isScrolled ? 'scrolled' : 'transparent']">
+            <div class="container-fluid px-4 px-lg-5">
+                <a class="navbar-brand" href="#home" aria-label="Home">
+                    <!-- LOGO PRINCIPAL -->
+                    <img src="assets/iconos/principal_color.svg" alt="King's Hill Logo Principal"
+                        style="height: 90px; width: auto; filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.4)) brightness(1.1);">
+                </a>
+
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars text-white fs-3"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/nosotros" id="dropNosotros" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Nosotros
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropNosotros">
+                                <li><a class="dropdown-item" href="/nosotros">Misión</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#propuesta">Modelo Educativo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#oferta">Oferta Educativa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#instalaciones">Instalaciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#vida-escolar">Vida Escolar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contacto">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Nosotros -->
+        <section class="intro-section text-center" style="padding-top: 10rem;">
+            <img src="assets/iconos/Recurso 4.png" alt="Decoración corporativa" class="intro-bg-icon">
+            <div class="container" style="position: relative; z-index: 1;">
+                <h2 class="intro-title" style="color: var(--primary-guinda); font-family: var(--font-serif); font-weight: 400; font-size: 3.5rem;">Nosotros</h2>
+                <p class="intro-text mt-4">
+                    King's Hill School nació en 1991 por la visión del Apóstol Alfredo Ferrara, iniciando como un sueño lleno de fe con preescolar y primaria en una casa de renta, atendiendo desde guardería hasta 6º grado con 148 alumnos y 12 maestros comprometidos con una misión clara: formar vidas con excelencia académica y principios bíblicos, teniendo a Cristo como modelo. 
+                    Con el paso de los años, aquel sueño creció y se fortaleció con la construcción del edificio que hoy nos alberga y la integración de secundaria, preparatoria y universidad, consolidándose como una extensión educativa de la iglesia cristiana Castillo del Rey Brisas. Generación tras generación, el colegio ha mantenido las bases sólidas que sus fundadores sembraron: amar y servir al Señor con todo el corazón, formar carácter y preparar a cada alumno para impactar su entorno. 
+                    Hoy, King's Hill School honra esa esencia mientras avanza con metodologías innovadoras, infraestructura adecuada y tecnología al servicio del aprendizaje, ofreciendo experiencias académicas, espirituales y formativas que permiten a los alumnos descubrir sus talentos, desarrollar habilidades para la vida y participar activamente en proyectos, talleres, asambleas, clases públicas y eventos donde evidencian lo aprendido. 
+                    Así, seguimos siendo el mismo colegio de valores firmes y corazón apasionado, ahora fortalecido para acompañar a cada generación en su presente y prepararla con esperanza para su futuro.
+                </p>
+                <div class="row mt-5 justify-content-center g-4">
+                    <div class="col-md-4">
+                        <img src="assets/img/Actividades-01.webp" alt="Actividades Académicas" class="img-fluid rounded-4 shadow-lg" style="object-fit: cover; height: 320px; width: 100%;">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/img/Biblioteca-01.webp" alt="Asamblea Estudiantil" class="img-fluid rounded-4 shadow-lg" style="object-fit: cover; height: 320px; width: 100%;">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/img/Preescolar-04.png" alt="Instalaciones Escolares" class="img-fluid rounded-4 shadow-lg" style="object-fit: cover; height: 320px; width: 100%;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Misión, Visión y Filosofía -->
+        <section id="nosotros-detalles" style="padding: 5rem 0; background-color: #ffffff;">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-md-4 text-center">
+                        <i class="fa-solid fa-bullseye" style="font-size: 3rem; color: var(--primary-navy); margin-bottom: 1.5rem;"></i>
+                        <h3 style="color: var(--primary-guinda); font-family: var(--font-serif);">Misión</h3>
+                        <p class="text-muted mt-3">Añadir a la fe virtud y a ésta conocimiento, que busca despertar en el alumno una devoción por el servicio al Señor y a su prójimo.</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fa-solid fa-lightbulb" style="font-size: 3rem; color: var(--primary-navy); margin-bottom: 1.5rem;"></i>
+                        <h3 style="color: var(--primary-guinda); font-family: var(--font-serif);">Visión</h3>
+                        <p class="text-muted mt-3">Formar hombres y mujeres quienes por su testimonio y preparación, sean capaces de transformar generaciones, sirviendo a su patria y a la sociedad para la gloria de Dios.</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fa-solid fa-star" style="font-size: 3rem; color: var(--primary-navy); margin-bottom: 1.5rem;"></i>
+                        <h3 style="color: var(--primary-guinda); font-family: var(--font-serif);">Valores</h3>
+                        <ul class="text-muted mt-3 list-unstyled" style="font-size: 1.1rem; line-height: 1.8;">
+                            <li>Testimonio</li>
+                            <li>Preparación</li>
+                            <li>Servicio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 9. Footer -->
+        <footer id="contacto" class="footer" style="padding-bottom: 0;">
+            <div class="container" style="padding-bottom: 4rem;">
+                <div class="row justify-content-between gy-5">
+
+                    <div class="col-lg-4 col-md-6">
+                        <img src="assets/iconos/principal_color.svg" alt="King's Hill School" style="height: 70px; width: auto; margin-bottom: 1.5rem; display: block;">
+                        <p class="mt-3">Acompañando a cada alumno en su crecimiento intelectual, espiritual y personal
+                            en un entorno seguro e inspirador.</p>
+                        <div class="social-icons mt-4">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <h4>Ubicación</h4>
+                        <p>
+                            <i class="fa-solid fa-location-dot me-2 text-white"></i>
+                            Alcaldías No. 399<br>
+                            Col. Los Rosales<br>
+                            Monterrey, N.L. CP 64764
+                        </p>
+                        <a href="https://maps.google.com/?q=Colegio+Maranatha+Monterrey" target="_blank"
+                            class="btn btn-outline-light btn-sm mt-3" style="border-radius: 20px;">
+                            <i class="fa-solid fa-map-location-dot me-1"></i> Ver en Mapa
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <h4>Contacto Admisiones</h4>
+                        <p class="mb-3">
+                            <i class="fa-solid fa-phone me-2 text-white"></i>
+                            <a href="tel:+528189895777">(81) 8989-5777</a>
+                        </p>
+                        <p class="mb-3">
+                            <i class="fa-solid fa-phone me-2 text-white"></i>
+                            <a href="tel:+528180405605">(81) 8040-5605</a>
+                        </p>
+                        <p class="mb-3">
+                            <i class="fa-solid fa-envelope me-2 text-white"></i>
+                            <a href="mailto:contacto@colegiomaranatha.edu.mx">contacto@colegiomaranatha.edu.mx</a>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div style="background-color: white; padding: 1.5rem 0; margin-top: 1rem;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                    <img src="assets/iconos/principal_color.svg" alt="King's Hill Logo Secundario"
+                        style="height: 60px; width: auto; max-width: 100%; object-fit: contain;">
+                </div>
+                <div class="col-md-8 text-center text-md-end">
+                    <p class="mb-0" style="color: var(--primary-navy); font-weight: 500; font-size: 0.95rem;">&copy;
+                        2026 King's Hill School. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </footer>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vue 3 Setup -->
+    <script>
+        const { createApp, ref, onMounted, onUnmounted } = Vue;
+
+        createApp({
+            setup() {
+                // Navbar behavior
+                const isScrolled = ref(false);
+
+                const checkScroll = () => {
+                    isScrolled.value = window.scrollY > 80;
+                };
+
+                onMounted(() => {
+                    window.addEventListener('scroll', checkScroll);
+                    checkScroll();
+                });
+
+                onUnmounted(() => {
+                    window.removeEventListener('scroll', checkScroll);
+                });
+
+                // Data section 4
+                const propuestaData = ref([
+                    { title: 'Excelencia académica bilingüe', icon: 'fa-solid fa-earth-americas' },
+                    { title: 'Formación cristiana intencional y auténtica', icon: 'fa-solid fa-book-bible' },
+                    { title: 'Metodologías activas y aprendizaje significativo', icon: 'fa-solid fa-lightbulb' },
+                    { title: 'Docentes capacitados que enseñan con conocimiento y ejemplo', icon: 'fa-solid fa-chalkboard-user' },
+                    { title: 'Uso responsable de la tecnología adecuado a la edad', icon: 'fa-solid fa-laptop-code' },
+                    { title: 'Ambiente cálido, seguro y con atención personalizada', icon: 'fa-solid fa-hands-holding-child' }
+                ]);
+
+                // Data section 6
+                const divisionesData = ref([
+                    { name: 'Inicial', image: 'assets/img/Maternal.webp' },
+                    { name: 'Preescolar', image: 'assets/img/Preescolar-02.webp' },
+                    { name: 'Primaria', image: 'assets/img/Primaria-01.webp' },
+                    { name: 'Secundaria', image: 'assets/img/Secundaria-01.webp' },
+                    { name: 'Preparatoria', image: 'assets/img/Preparatoria-01.webp' }
+                ]);
+
+                // Data section 8
+                const galeriaData = ref([
+                    { src: 'assets/img/Actividades-01.webp', alt: 'Actividades Escolares' },
+                    { src: 'assets/img/Actividades-02.webp', alt: 'Actividades Escolares' },
+                    { src: 'assets/img/Auditorio-01.webp', alt: 'Auditorio' },
+                    { src: 'assets/img/Biblioteca-01.webp', alt: 'Biblioteca Escolar' },
+                    { src: 'assets/img/Cafeteria-01.webp', alt: 'Cafetería' },
+                    { src: 'assets/img/Cancha-03.webp', alt: 'Cancha Deportiva' },
+                    { src: 'assets/img/Computacion-02.webp', alt: 'Aula de Computación' },
+                    { src: 'assets/img/Gimnasio-01.webp', alt: 'Gimnasio' },
+                    { src: 'assets/img/Laboratorio-02.webp', alt: 'Laboratorio' },
+                    { src: 'assets/img/Pasillo-02.webp', alt: 'Pasillos y Entorno' },
+                    { src: 'assets/img/Polivalente.webp', alt: 'Aula Polivalente' },
+                ]);
+
+                return {
+                    isScrolled,
+                    propuestaData,
+                    divisionesData,
+                    galeriaData
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>
