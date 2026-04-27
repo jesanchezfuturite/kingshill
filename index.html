@@ -266,7 +266,7 @@
             margin: 0 auto;
         }
 
-        /* 4. Propuesta Educativa */
+        /* 4. Modelo Educativo */
         .propuesta-section {
             padding: 6rem 0;
             background-color: #ffffff;
@@ -542,7 +542,7 @@
                             <a class="nav-link" href="nosotros">Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#propuesta">Modelo Educativo</a>
+                            <a class="nav-link" href="#modelo-educativo">Modelo Educativo</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="oferta-educativa">Oferta Educativa</a>
@@ -551,7 +551,7 @@
                             <a class="nav-link" href="#instalaciones">Instalaciones</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#vida-escolar">Vida Escolar</a>
+                            <a class="nav-link" href="#vida-escolar">Comunidad Escolar</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contacto">Contacto</a>
@@ -593,10 +593,10 @@
             </div>
         </section>
 
-        <!-- 4. Propuesta Educativa (Cuadrícula Vue) -->
-        <section id="propuesta" class="propuesta-section">
+        <!-- 4. Modelo Educativo (Cuadrícula Vue) -->
+        <section id="modelo-educativo" class="propuesta-section">
             <div class="container">
-                <h2 class="text-center mb-5" style="color: var(--primary-navy); font-weight: 400;">Propuesta Educativa
+                <h2 class="text-center mb-5" style="color: var(--primary-navy); font-weight: 400;">Modelo Educativo
                 </h2>
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-4" v-for="(item, index) in propuestaData" :key="index">
@@ -621,14 +621,14 @@
                 <div class="row g-4 justify-content-center">
                     <div v-for="(division, index) in divisionesData" :key="index"
                         :class="index >= 3 ? 'col-md-6 col-lg-6' : 'col-md-6 col-lg-4'">
-                        <div class="division-card">
+                        <a :href="'oferta-educativa#' + division.name.toLowerCase()" class="division-card text-decoration-none">
                             <div class="division-img-wrapper">
                                 <div class="division-bg" :style="{ backgroundImage: 'url(' + division.image + ')' }"></div>
                             </div>
                             <div class="division-strip">
                                 <h3 class="division-title">{{ division.name }}</h3>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
