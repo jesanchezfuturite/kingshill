@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oferta Educativa | King's Hill School</title>
+    <title>Instalaciones | King's Hill School</title>
 
     <!-- Google Fonts: Libre Baskerville (Títulos) e Inter (Textos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -561,138 +561,42 @@
             </div>
         </nav>
 
-        <!-- Header Oferta Educativa -->
+        <!-- Header Instalaciones -->
         <section class="intro-section text-center" style="padding-top: 15rem; padding-bottom: 5rem; background-color: var(--primary-light);">
-            <img src="assets/iconos/Recurso 4.png" alt="Decoración corporativa" class="intro-bg-icon">
+            <img src="assets/iconos/Recurso 5.png" alt="Decoración corporativa" class="intro-bg-icon" style="top: auto; bottom: 0; left: 0; right: auto; transform: translate(-15%, -15%);">
             <div class="container" style="position: relative; z-index: 1;">
-                <h2 class="intro-title" style="color: var(--primary-guinda); font-family: var(--font-serif); font-weight: 400; font-size: 3.5rem;">Nuestra Oferta Educativa</h2>
+                <h2 class="intro-title" style="color: var(--primary-guinda); font-family: var(--font-serif); font-weight: 400; font-size: 3.5rem;">Nuestras Instalaciones</h2>
             </div>
         </section>
 
-        <!-- Secciones de Oferta Educativa -->
-        <section style="padding: 5rem 0; background-color: #ffffff;">
-            <div class="container">
-                
-                <!-- Inicial -->
-                <div id="inicial" class="row align-items-stretch mb-5 pb-4">
-                    <div class="col-lg-5 mb-4 mb-lg-0">
-                        <div class="division-card" style="height: 100%; min-height: 450px; border-radius: 12px; overflow: hidden; cursor: default;">
-                            <div class="division-strip">
-                                <h3 class="division-title">Inicial</h3>
-                            </div>
-                            <div class="division-img-wrapper">
-                                <div class="division-bg" style="background-image: url('assets/img/Maternal.webp');"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="propuesta-card text-start h-100 p-4 p-lg-5 d-flex flex-column justify-content-center" style="cursor: default;">
-                            <p style="font-size: 1.05rem; line-height: 1.8; color: #4a4a4a;">
-                                Acompañamos a niños de 0 a 3 años en un ambiente seguro y amoroso, incorporado a la Secretaría de Educación. Nuestro programa académico bilingüe se basa en una <b>metodología activa de aprendizaje mediante el juego</b>, estimulación temprana y música, permitiendo que los pequeños exploren el mundo mientras desarrollan habilidades motrices y sensoriales fundamentales bajo el cuidado de personal altamente capacitado.
-                            </p>
-                            <p style="font-size: 1.05rem; line-height: 1.8; color: #4a4a4a; margin-bottom: 0;">
-                                Contamos con instalaciones diseñadas especialmente para su edad, donde brindamos atención personalizada que promueve el bienestar y la confianza familiar. Además, integramos la <b>formación espiritual desde el inicio</b> a través de devocionales y alabanzas diarias, sembrando en ellos el amor de Dios como una base firme que los acompañará durante toda su trayectoria escolar.
-                            </p>
-                        </div>
+        <!-- Galería Carrusel Full Width -->
+        <section class="container-fluid px-0" style="padding-top: 4rem; padding-bottom: 6rem; background-color: #ffffff;">
+            <div id="instalacionesGallery" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-indicators" style="margin-bottom: 2rem;">
+                    <button v-for="(img, idx) in galeriaData" :key="'indicator-' + idx" type="button"
+                        data-bs-target="#instalacionesGallery" :data-bs-slide-to="idx" :class="{ active: idx === 0 }"
+                        :aria-current="idx === 0 ? 'true' : 'false'" :aria-label="'Slide ' + (idx + 1)"></button>
+                </div>
+
+                <div class="carousel-inner">
+                    <div v-for="(img, idx) in galeriaData" :key="'slide-' + idx"
+                        :class="['carousel-item', { active: idx === 0 }]" data-bs-interval="4000">
+                        <img :src="img.src" class="d-block w-100" :alt="img.alt" style="height: 75vh; object-fit: cover;">
                     </div>
                 </div>
 
-                <!-- Preescolar -->
-                <div id="preescolar" class="row align-items-stretch mb-5 pb-4 flex-lg-row-reverse">
-                    <div class="col-lg-5 mb-4 mb-lg-0">
-                        <div class="division-card" style="height: 100%; min-height: 450px; border-radius: 12px; overflow: hidden; cursor: default;">
-                            <div class="division-strip">
-                                <h3 class="division-title">Preescolar</h3>
-                            </div>
-                            <div class="division-img-wrapper">
-                                <div class="division-bg" style="background-image: url('assets/img/Preescolar-03.webp');"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="propuesta-card text-start h-100 p-4 p-lg-5 d-flex flex-column justify-content-center" style="cursor: default;">
-                            <p style="font-size: 1.05rem; line-height: 1.8; color: #4a4a4a;">
-                                Brindamos una formación integral y bilingüe que impulsa el crecimiento intelectual, social y emocional en un entorno seguro y con propósito. Mediante una <b>metodología basada en proyectos</b>, conectamos el aprendizaje con la vida diaria para fomentar la curiosidad y la autonomía, siempre bajo el acompañamiento de docentes profesionales que respetan el ritmo individual de cada alumno.
-                            </p>
-                            <p style="font-size: 1.05rem; line-height: 1.8; color: #4a4a4a; margin-bottom: 0;">
-                                La base cristiana es el eje de nuestra vida escolar; integramos la Palabra de Dios diariamente a través de devocionales y enseñanzas bíblicas. Así, guiamos a los niños a conocer a Jesús de forma personal, cimentando <b>bases espirituales firmes</b> que fortalecen tanto su carácter como su desarrollo académico futuro.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Primaria -->
-                <div id="primaria" class="row align-items-stretch mb-5 pb-4">
-                    <div class="col-lg-5 mb-4 mb-lg-0">
-                        <div class="division-card" style="height: 100%; min-height: 450px; border-radius: 12px; overflow: hidden; cursor: default;">
-                            <div class="division-strip">
-                                <h3 class="division-title">Primaria</h3>
-                            </div>
-                            <div class="division-img-wrapper">
-                                <div class="division-bg" style="background-image: url('assets/img/Primaria-01.webp');"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="propuesta-card text-start h-100 p-4 p-lg-5 d-flex flex-column justify-content-center" style="cursor: default;">
-                            <p style="font-size: 1.05rem; line-height: 1.8; color: #4a4a4a;">
-                                Ofrecemos una formación académica sólida y exigente bajo un enfoque bilingüe intensivo, donde el <b>80% de las clases se imparten en inglés</b> junto a un programa de español de alta calidad. A través de una metodología ecléctica, promovemos el pensamiento crítico y la participación activa, contando con docentes capacitados que guían a los alumnos con el ejemplo para alcanzar la excelencia personal y académica.
-                            </p>
-                            <p style="font-size: 1.05rem; line-height: 1.8; color: #4a4a4a; margin-bottom: 0;">
-                                Nuestra propuesta integra fundamentos bíblicos en el aprendizaje diario, asegurando contenidos coherentes con los valores cristianos. Iniciamos cada jornada con una <b>búsqueda intencional de Dios</b>, formando hábitos espirituales y un carácter firme en nuestros estudiantes, brindando a las familias la tranquilidad de una educación integral con propósito eterno.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Secundaria -->
-                <div id="secundaria" class="row align-items-stretch mb-5 pb-4 flex-lg-row-reverse">
-                    <div class="col-lg-5 mb-4 mb-lg-0">
-                        <div class="division-card" style="height: 100%; min-height: 450px; border-radius: 12px; overflow: hidden; cursor: default;">
-                            <div class="division-strip">
-                                <h3 class="division-title">Secundaria</h3>
-                            </div>
-                            <div class="division-img-wrapper">
-                                <div class="division-bg" style="background-image: url('assets/img/Secundaria-01.webp');"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="propuesta-card text-start h-100 p-4 p-lg-5 d-flex flex-column justify-content-center" style="cursor: default;">
-                            <p style="font-size: 1.05rem; line-height: 1.8; color: #4a4a4a;">
-                                Brindamos una formación académica sólida que integra el uso responsable de la tecnología y recursos digitales para preparar a los alumnos ante los retos actuales. Mediante una <b>metodología basada en proyectos y trabajo colaborativo</b>, fomentamos el pensamiento crítico y la participación activa, complementando el aprendizaje con talleres deportivos y de diversas disciplinas que potencian el desarrollo integral bajo la guía de docentes acreditados.
-                            </p>
-                            <p style="font-size: 1.05rem; line-height: 1.8; color: #4a4a4a; margin-bottom: 0;">
-                                Consolidamos el crecimiento espiritual como un pilar fundamental, iniciando cada jornada con devocionales que profundizan en la Palabra de Dios. Nuestro objetivo es que los estudiantes desarrollen una <b>fe personal y convicciones firmes</b>, aprendiendo a tomar decisiones basadas en principios bíblicos y a reflejar el carácter de Cristo en su vida diaria y en su entorno social.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Preparatoria -->
-                <div id="preparatoria" class="row align-items-stretch">
-                    <div class="col-lg-5 mb-4 mb-lg-0">
-                        <div class="division-card" style="height: 100%; min-height: 450px; border-radius: 12px; overflow: hidden; cursor: default;">
-                            <div class="division-strip">
-                                <h3 class="division-title">Preparatoria</h3>
-                            </div>
-                            <div class="division-img-wrapper">
-                                <div class="division-bg" style="background-image: url('assets/img/Preparatoria-01.webp');"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="propuesta-card text-start h-100 p-4 p-lg-5 d-flex flex-column justify-content-center" style="cursor: default;">
-                            <p style="font-size: 1.05rem; line-height: 1.8; color: #4a4a4a;">
-                                Nuestra formación de alto rigor académico está <b>incorporada a la UANL</b>, ofreciendo bachillerato general y <b>modalidad 100% bilingüe</b> con un uso estratégico de herramientas digitales. A través de una metodología de proyectos y grupos reducidos, fomentamos el pensamiento crítico y la exploración vocacional, asegurando una atención personalizada por parte de un equipo docente altamente capacitado que prepara a los alumnos para los retos profesionales del mundo actual.
-                            </p>
-                            <p style="font-size: 1.05rem; line-height: 1.8; color: #4a4a4a; margin-bottom: 0;">
-                                La formación espiritual es el pilar que guía a nuestros jóvenes en la toma de decisiones sabias, iniciando cada jornada con devocionales que fortalecen su relación personal con Dios. Nuestro propósito es que egresen con una <b>preparación académica de excelencia y una identidad firme</b>, cimentada en principios bíblicos que les permitan enfrentar el futuro con carácter y convicción.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
+                <button class="carousel-control-prev" type="button" data-bs-target="#instalacionesGallery"
+                    data-bs-slide="prev" style="width: 5%;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"
+                        style="filter: drop-shadow(0px 0px 8px rgba(0,0,0,0.8)); width: 3rem; height: 3rem;"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#instalacionesGallery"
+                    data-bs-slide="next" style="width: 5%;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"
+                        style="filter: drop-shadow(0px 0px 8px rgba(0,0,0,0.8)); width: 3rem; height: 3rem;"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
             </div>
         </section>
 
@@ -812,17 +716,16 @@
 
                 // Data section 8
                 const galeriaData = ref([
-                    { src: 'assets/img/Actividades-01.webp', alt: 'Actividades Escolares' },
-                    { src: 'assets/img/Actividades-02.webp', alt: 'Actividades Escolares' },
-                    { src: 'assets/img/Auditorio-01.webp', alt: 'Auditorio' },
-                    { src: 'assets/img/Biblioteca-01.webp', alt: 'Biblioteca Escolar' },
-                    { src: 'assets/img/Cafeteria-01.webp', alt: 'Cafetería' },
-                    { src: 'assets/img/Cancha-03.webp', alt: 'Cancha Deportiva' },
-                    { src: 'assets/img/Computacion-02.webp', alt: 'Aula de Computación' },
+                    { src: 'assets/img/Actividades-04.webp', alt: 'Actividades Escolares' },
+                    { src: 'assets/img/Asamblea-01.webp', alt: 'Asamblea' },
+                    { src: 'assets/img/Biblioteca-03.webp', alt: 'Biblioteca Escolar' },
+                    { src: 'assets/img/Cafeteria-02.webp', alt: 'Cafetería' },
+                    { src: 'assets/img/Cafeteria-03.webp', alt: 'Cafetería' },
+                    { src: 'assets/img/Cancha-01.webp', alt: 'Cancha Deportiva' },
                     { src: 'assets/img/Gimnasio-01.webp', alt: 'Gimnasio' },
-                    { src: 'assets/img/Laboratorio-02.webp', alt: 'Laboratorio' },
+                    { src: 'assets/img/Laboratorio-01.webp', alt: 'Laboratorio' },
+                    { src: 'assets/img/Pasillo.webp', alt: 'Pasillo' },
                     { src: 'assets/img/Pasillo-02.webp', alt: 'Pasillos y Entorno' },
-                    { src: 'assets/img/Polivalente.webp', alt: 'Aula Polivalente' },
                 ]);
 
                 return {
