@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo Educativo | King's Hill School</title>
+    <meta name="description" content="Descubre el Modelo Educativo de King's Hill School: excelencia académica bilingüe, formación cristiana intencional y metodologías activas para un aprendizaje con propósito.">
+
+    <!-- Google Fonts: Libre Baskerville (Títulos) e Inter (Textos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome para Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Vue 3 CDN (Global Build) -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Estilos Personalizados UI/UX -->
+    <style>
+        /* Variables de Marca (Brandbook) */
+        :root {
+            --primary-guinda: #66061A;
+            --primary-navy: #08122F;
+            --primary-light: #F2F2F2;
+            --secondary-red: #A61723;
+            --secondary-cream: #FFDBB3;
+            --secondary-royal: #001F56;
+
+            --font-serif: 'Libre Baskerville', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        /* Resets & Body Generales */
+        body {
+            font-family: var(--font-sans);
+            color: #333;
+            background-color: var(--primary-light);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-serif);
+        }
+
+        /* 1. Header & Navbar */
+        .navbar {
+            transition: background-color 0.4s ease-in-out, padding 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            padding: 1.2rem 0;
+        }
+
+        .navbar.transparent {
+            background-color: transparent !important;
+        }
+
+        .navbar.scrolled {
+            background-color: var(--primary-navy) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 0.6rem 0;
+        }
+
+        .navbar-brand img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-cream);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-item:hover,
+        .dropdown-item:active {
+            background-color: var(--primary-light);
+            color: var(--primary-guinda);
+        }
+
+        @media (min-width: 992px) {
+            .nav-item.dropdown:hover .dropdown-menu {
+                display: block;
+                margin-top: 0;
+            }
+        }
+
+        /* 2. Hero Video Section */
+        .hero-video-section {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(8, 18, 47, 0.85) 0%, rgba(102, 6, 26, 0.85) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 1.5rem;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            color: var(--secondary-cream);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--primary-light);
+            font-family: var(--font-sans);
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            border-left: 3px solid var(--secondary-red);
+            padding-left: 15px;
+            display: inline-block;
+        }
+
+        .btn-scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            z-index: 2;
+            text-decoration: none;
+        }
+
+        .btn-scroll-down:hover {
+            color: var(--secondary-cream);
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            50% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+
+        /* 3. Introducción */
+        .intro-section {
+            background-color: var(--primary-light);
+            padding: 7rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-bg-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: clamp(200px, 25vw, 450px);
+            transform: translate(-25%, -25%);
+            opacity: 0.25;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .intro-title {
+            color: var(--primary-navy);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            font-size: 3rem;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #4a4a4a;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .btn-history {
+            border: 2px solid var(--primary-guinda);
+            color: var(--primary-guinda);
+            background-color: transparent;
+            padding: 0.8rem 2.5rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-family: var(--font-sans);
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .btn-history:hover {
+            background-color: var(--primary-guinda);
+            color: white;
+            box-shadow: 0 8px 15px rgba(102, 6, 26, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* 4. Pilares del Modelo Educativo */
+        .propuesta-section {
+            padding: 6rem 0;
+            background-color: #ffffff;
+        }
+
+        .propuesta-card {
+            background: var(--primary-light);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            height: 100%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .propuesta-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        .propuesta-icon {
+            font-size: 3.5rem;
+            color: var(--primary-guinda);
+            margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .propuesta-card:hover .propuesta-icon {
+            color: var(--secondary-royal);
+        }
+
+        .propuesta-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-navy);
+            font-family: var(--font-sans);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .propuesta-card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* 5. Quote Banner */
+        .quote-banner-section {
+            background-color: var(--primary-navy);
+            position: relative;
+            overflow: hidden;
+            padding: 5rem 0;
+        }
+
+        .quote-text {
+            color: white;
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.5;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 6. Etapas Académicas */
+        .etapas-section {
+            padding: 7rem 0;
+            background-color: var(--primary-light);
+        }
+
+        .etapa-card {
+            display: block;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding-bottom: 1.5rem;
+            height: 100%;
+        }
+
+        .etapa-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .etapa-img-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .etapa-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .etapa-card:hover .etapa-img {
+            transform: scale(1.08);
+        }
+
+        .etapa-name {
+            font-family: var(--font-serif);
+            color: var(--primary-navy);
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .etapa-card:hover .etapa-name {
+            color: var(--primary-guinda);
+        }
+
+        .etapa-link-text {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--secondary-red);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .etapa-card:hover .etapa-link-text {
+            opacity: 1;
+        }
+
+        /* Call to Action (Admisiones) */
+        .cta-section {
+            padding: 3.5rem 0;
+            text-align: center;
+            background-color: white;
+        }
+
+        .btn-cta {
+            background-color: var(--primary-guinda);
+            color: white;
+            padding: 1.2rem 3.5rem;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-guinda);
+            box-shadow: 0 8px 15px rgba(102, 6, 26, 0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-cta:hover {
+            background-color: transparent;
+            color: var(--primary-guinda);
+            box-shadow: 0 15px 25px rgba(102, 6, 26, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* 7. Galería de Fotos */
+        .galeria-fotos-section {
+            padding: 6rem 0;
+            background-color: white;
+        }
+
+        .galeria-photo-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .galeria-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .galeria-photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(8, 18, 47, 0.9) 0%, rgba(8, 18, 47, 0.3) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .galeria-photo-wrapper:hover .galeria-photo {
+            transform: scale(1.1);
+        }
+
+        .galeria-photo-wrapper:hover .galeria-photo-overlay {
+            opacity: 1;
+        }
+
+        .galeria-photo-title {
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .galeria-photo-wrapper:hover .galeria-photo-title {
+            transform: translateY(0);
+        }
+
+        /* 8. Footer */
+        .footer {
+            background-color: var(--primary-navy);
+            color: white;
+            padding: 5rem 0 2rem 0;
+        }
+
+        .footer h4 {
+            color: var(--secondary-cream);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-serif);
+            font-weight: 400;
+            font-size: 1.4rem;
+        }
+
+        .footer p,
+        .footer a {
+            color: #d1d5db;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-right: 0.8rem;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-guinda);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Global */
+        @media (max-width: 991px) {
+            .navbar.transparent {
+                background-color: var(--primary-navy) !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 1. Header / Barra de Navegación -->
+        <nav :class="['navbar', 'navbar-expand-lg', 'fixed-top', isScrolled ? 'scrolled' : 'transparent']">
+            <div class="container-fluid px-4 px-lg-5">
+                <a class="navbar-brand" href="/kingshill" aria-label="Home">
+                    <!-- LOGO PRINCIPAL -->
+                    <img src="assets/iconos/principal_color.svg" alt="King's Hill Logo Principal" style="height: 90px; width: auto; filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.4)) brightness(1.1);">
+                </a>
+
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars text-white fs-3"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/kingshill">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="nosotros">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="modelo-educativo">Modelo Educativo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="oferta-educativa">Oferta Educativa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="instalaciones">Instalaciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/kingshill/#comunidad-escolar">Comunidad Escolar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 2. Hero Section (Video Banner) -->
+        <section id="home" class="hero-video-section">
+            <div class="video-background">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/videos/colegio_kinghill.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            <div class="hero-content text-center">
+                <div class="container">
+                    <h1 class="hero-title">Modelo Educativo</h1>
+                    <p class="hero-subtitle">Formando generaciones con excelencia y bases eternas</p>
+                </div>
+            </div>
+            <a href="#introduccion" class="btn-scroll-down animate-bounce">
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+        </section>
+
+        <!-- 3. Introducción -->
+        <section id="introduccion" class="intro-section text-center">
+            <img src="assets/iconos/Recurso 4.png" alt="Decoración corporativa" class="intro-bg-icon">
+            <div class="container" style="position: relative; z-index: 1;">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="logo-container mb-4">
+                            <img src="assets/iconos/principal_color.svg" alt="King's Hill School Logo" class="img-fluid" style="height: 100px; width: auto; filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.1));">
+                        </div>
+                        <h2 class="intro-title">King's Hill School</h2>
+                        <p class="intro-text mt-4">
+                            King’s Hill School es una institución educativa cristiana con 35 años de experiencia formando generaciones con excelencia académica y fundamentos bíblicos sólidos. Acompañamos a cada alumno en su crecimiento intelectual, espiritual y personal, dentro de un entorno
+                            bilingüe que amplía su visión y fortalece su preparación. Con incorporación oficial ante la SEP y la UANL, educamos para que sean establecidos en verdad y aprendan a caminar en ella.
+                        </p>
+                        <div class="mt-5">
+                            <a href="nosotros" class="btn btn-history">Conoce nuestra historia</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Pilares del Modelo Educativo -->
+        <section id="pilares" class="propuesta-section">
+            <div class="container">
+                <h2 class="text-center mb-5" style="color: var(--primary-navy); font-weight: 400; font-size: 2.8rem;">Modelo educativo</h2>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4" v-for="(item, index) in modeloPillars" :key="index">
+                        <div class="propuesta-card text-start d-flex flex-column h-100">
+                            <div class="propuesta-icon text-center text-lg-start">
+                                <i :class="item.icon"></i>
+                            </div>
+                            <h3 class="mb-3">{{ item.title }}</h3>
+                            <p class="text-muted flex-grow-1" style="margin-bottom: 0;">{{ item.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Quote Banner -->
+        <section class="quote-banner-section py-5">
+            <div class="container text-center py-4">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <i class="fa-solid fa-quote-left mb-4 opacity-50" style="font-size: 2.5rem; color: var(--secondary-cream);"></i>
+                        <h2 class="quote-text">
+                            Educamos mentes con excelencia, formamos corazones con fe y guiamos vidas con propósito.
+                        </h2>
+                        <i class="fa-solid fa-quote-right mt-4 opacity-50 d-inline-block" style="font-size: 2.5rem; color: var(--secondary-cream);"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Etapas Académicas -->
+        <section id="etapas" class="etapas-section">
+            <div class="container">
+                <div class="row g-4 justify-content-center mb-5">
+                    <div v-for="(etapa, index) in etapasData" :key="index" :class="index >= 3 ? 'col-md-6 col-lg-5 px-3' : 'col-md-6 col-lg-4 px-3'">
+                        <a :href="'oferta-educativa#' + etapa.anchor" class="etapa-card text-decoration-none d-flex flex-column">
+                            <div class="etapa-img-container">
+                                <img :src="etapa.image" :alt="etapa.name" class="etapa-img">
+                            </div>
+                            <div class="etapa-info text-center mt-3 flex-grow-1 d-flex flex-column justify-content-between">
+                                <h3 class="etapa-name">{{ etapa.name }}</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CTA Admisiones -->
+                <div class="text-center mt-5 pt-3">
+                    <a href="contacto" class="btn-cta">Admisiones 2026</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Galería de Fotos (Carrusel) -->
+        <section id="galeria" class="galeria-fotos-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div id="schoolGallery" class="carousel slide carousel-fade shadow-lg" data-bs-ride="carousel" style="border-radius: 12px; overflow: hidden;">
+                            <div class="carousel-indicators">
+                                <button v-for="(img, idx) in galeriaFotos" :key="'indicator-' + idx" type="button"
+                                    data-bs-target="#schoolGallery" :data-bs-slide-to="idx" :class="{ active: idx === 0 }"
+                                    :aria-current="idx === 0 ? 'true' : 'false'" :aria-label="'Slide ' + (idx + 1)"></button>
+                            </div>
+
+                            <div class="carousel-inner">
+                                <div v-for="(img, idx) in galeriaFotos" :key="'slide-' + idx"
+                                    :class="['carousel-item', { active: idx === 0 }]" data-bs-interval="4000">
+                                    <div class="galeria-photo-wrapper" style="aspect-ratio: 16/9; border-radius: 0; box-shadow: none;">
+                                        <img :src="img.src" :alt="img.alt" class="d-block w-100 galeria-photo">
+                                        <div class="galeria-photo-overlay">
+                                            <span class="galeria-photo-title">{{ img.alt }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#schoolGallery" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: drop-shadow(0px 0px 5px black);"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#schoolGallery" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true" style="filter: drop-shadow(0px 0px 5px black);"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Footer -->
+        <footer id="contacto" class="footer" style="padding-bottom: 0;">
+            <div class="container" style="padding-bottom: 4rem;">
+                <div class="row justify-content-between gy-5">
+
+                    <div class="col-lg-4 col-md-6">
+                        <img src="assets/iconos/principal_color.svg" alt="King's Hill School" style="height: 70px; width: auto; margin-bottom: 1.5rem; display: block;">
+                        <p class="mt-3">Acompañando a cada alumno en su crecimiento intelectual, espiritual y personal
+                            en un entorno seguro e inspirador.</p>
+                        <div class="social-icons mt-4">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <h4>Ubicación</h4>
+                        <p>
+                            <i class="fa-solid fa-location-dot me-2 text-white"></i>
+                            Alcaldías No. 399<br>
+                            Col. Los Rosales<br>
+                            Monterrey, N.L. CP 64764
+                        </p>
+                        <a href="https://maps.google.com/?q=Colegio+Maranatha+Monterrey" target="_blank"
+                            class="btn btn-outline-light btn-sm mt-3" style="border-radius: 20px;">
+                            <i class="fa-solid fa-map-location-dot me-1"></i> Ver en Mapa
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <h4>Contacto Admisiones</h4>
+                        <p class="mb-3">
+                            <i class="fa-solid fa-phone me-2 text-white"></i>
+                            <a href="tel:+528189895777">(81) 8989-5777</a>
+                        </p>
+                        <p class="mb-3">
+                            <i class="fa-solid fa-phone me-2 text-white"></i>
+                            <a href="tel:+528180405605">(81) 8040-5605</a>
+                        </p>
+                        <p class="mb-3">
+                            <i class="fa-solid fa-envelope me-2 text-white"></i>
+                            <a href="mailto:contacto@colegiomaranatha.edu.mx">contacto@colegiomaranatha.edu.mx</a>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom Bar -->
+            <div style="background-color: white; padding: 1.5rem 0; margin-top: 1rem;">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                            <img src="assets/iconos/principal_color.svg" alt="King's Hill Logo Secundario"
+                                style="height: 60px; width: auto; max-width: 100%; object-fit: contain;">
+                        </div>
+                        <div class="col-md-8 text-center text-md-end">
+                            <p class="mb-0" style="color: var(--primary-navy); font-weight: 500; font-size: 0.95rem;">&copy;
+                                2026 King's Hill School. Todos los derechos reservados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vue 3 Setup -->
+    <script>
+        const { createApp, ref, onMounted, onUnmounted } = Vue;
+
+        createApp({
+            setup() {
+                // Navbar behavior
+                const isScrolled = ref(false);
+
+                const checkScroll = () => {
+                    isScrolled.value = window.scrollY > 80;
+                };
+
+                onMounted(() => {
+                    window.addEventListener('scroll', checkScroll);
+                    checkScroll();
+                });
+
+                onUnmounted(() => {
+                    window.removeEventListener('scroll', checkScroll);
+                });
+
+                // Pilares Modelo Educativo
+                const modeloPillars = ref([
+                    {
+                        title: 'Excelencia académica bilingüe',
+                        icon: 'fa-solid fa-earth-americas',
+                        description: 'Programas de alto nivel con una educación intensiva en inglés y español, certificados oficialmente.'
+                    },
+                    {
+                        title: 'Formación cristiana intencional y auténtica',
+                        icon: 'fa-solid fa-book-bible',
+                        description: 'Devocionales y enseñanzas bíblicas que fortalecen el carácter, la fe y la toma de decisiones basada en principios cristianos.'
+                    },
+                    {
+                        title: 'Metodologías activas y aprendizaje significativo',
+                        icon: 'fa-solid fa-lightbulb',
+                        description: 'Trabajo por proyectos, estrategias mixtas y metodologías dinámicas que fomentan la participación, la curiosidad y el pensamiento crítico.'
+                    },
+                    {
+                        title: 'Docentes capacitados que enseñan con conocimiento y ejemplo',
+                        icon: 'fa-solid fa-chalkboard-user',
+                        description: 'Personal profesional, acreditado y en constante actualización, comprometido con la excelencia académica.'
+                    },
+                    {
+                        title: 'Uso responsable de la tecnología adecuado a la edad',
+                        icon: 'fa-solid fa-laptop-code',
+                        description: 'Integración de herramientas digitales y recursos modernos que desarrollan habilidades clave para el mundo universitario y laboral actual.'
+                    },
+                    {
+                        title: 'Ambiente cálido, seguro y con atención personalizada',
+                        icon: 'fa-solid fa-hands-holding-child',
+                        description: 'Grupos moderados y una cultura escolar basada en valores que favorecen la convivencia sana, el acompañamiento cercano y el gusto por aprender.'
+                    }
+                ]);
+
+                // Etapas académicas
+                const etapasData = ref([
+                    { name: 'Inicial', image: 'assets/img/Maternal.webp', anchor: 'inicial' },
+                    { name: 'Preescolar', image: 'assets/img/Preescolar-02.webp', anchor: 'preescolar' },
+                    { name: 'Primaria', image: 'assets/img/Primaria-01.webp', anchor: 'primaria' },
+                    { name: 'Secundaria', image: 'assets/img/Secundaria-01.webp', anchor: 'secundaria' },
+                    { name: 'Preparatoria', image: 'assets/img/Preparatoria-01.webp', anchor: 'preparatoria' }
+                ]);
+
+                // Galería de Fotos
+                const galeriaFotos = ref([
+                    { src: 'assets/img/Actividades-01.webp', alt: 'Actividades Académicas' },
+                    { src: 'assets/img/Biblioteca-01.webp', alt: 'Biblioteca Escolar' },
+                    { src: 'assets/img/Computacion-02.webp', alt: 'Aula de Cómputo' },
+                    { src: 'assets/img/Laboratorio-02.webp', alt: 'Laboratorio de Ciencias' },
+                    { src: 'assets/img/Auditorio-01.webp', alt: 'Auditorio Escolar' },
+                    { src: 'assets/img/Actividades-02.webp', alt: 'Comunidad Estudiantil' }
+                ]);
+
+                return {
+                    isScrolled,
+                    modeloPillars,
+                    etapasData,
+                    galeriaFotos
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>
