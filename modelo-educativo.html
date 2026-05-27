@@ -671,7 +671,7 @@
 
         /* Banner de Compromiso Final */
         .modelo-commitment-banner {
-            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-guinda) 100%);
+            background-color: var(--primary-guinda);
             color: white;
             border-radius: 16px;
             padding: 3rem 2rem;
@@ -686,6 +686,114 @@
             margin: 0 auto;
             line-height: 1.6;
             font-style: italic;
+        }
+
+        /* Estilos específicos para la versión con iconos */
+        .propuesta-card-icon-version {
+            background-color: var(--primary-light);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(8, 18, 47, 0.01);
+            border-top: 5px solid var(--primary-guinda);
+            border-left: 1px solid rgba(8, 18, 47, 0.04);
+            border-right: 1px solid rgba(8, 18, 47, 0.04);
+            border-bottom: 1px solid rgba(8, 18, 47, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .propuesta-card-icon-version:hover {
+            transform: translateY(-8px);
+            background-color: white;
+            box-shadow: 0 15px 40px rgba(8, 18, 47, 0.08);
+        }
+
+        .propuesta-icon-badge {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            color: var(--primary-guinda);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(8, 18, 47, 0.04);
+        }
+
+        .propuesta-card-icon-version:hover .propuesta-icon-badge {
+            background-color: var(--primary-guinda);
+            color: white;
+        }
+
+        .propuesta-card-title {
+            color: var(--primary-navy);
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .propuesta-card-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 1.2rem;
+        }
+
+        .propuesta-card-subheading {
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-top: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            font-family: var(--font-sans);
+        }
+
+        .propuesta-card-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .propuesta-card-list li {
+            font-size: 0.95rem;
+            color: #333;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.4;
+        }
+
+        .propuesta-card-list li .list-icon {
+            color: var(--primary-guinda);
+            font-size: 1rem;
+            margin-right: 0.6rem;
+            margin-top: 0.2rem;
+        }
+
+        .propuesta-card-extra {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #4a4a4a;
+            background-color: white;
+            padding: 0.8rem 1rem;
+            border-left: 3px solid var(--primary-navy);
+            border-radius: 0 6px 6px 0;
+            margin-top: auto;
+            font-style: italic;
+            box-shadow: 0 4px 10px rgba(8, 18, 47, 0.02);
+        }
+
+        .propuesta-card-icon-version:hover .propuesta-card-extra {
+            background-color: var(--primary-light);
         }
 
         /* Responsive Global */
@@ -788,50 +896,44 @@
         </section>
 
         <!-- 4. Pilares del Modelo Educativo -->
-        <section id="pilares" class="propuesta-section" style="background-color: var(--primary-light);">
+        <section id="pilares" class="propuesta-section" style="background-color: #ffffff;">
             <div class="container">
+                <div class="row g-4 justify-content-center">
 
-                <!-- 1. Fuente de la verdad y fundamento del conocimiento -->
-                <div class="row align-items-center propuesta-row">
-                    <div class="col-lg-6 col-image">
-                        <div class="propuesta-img-wrapper">
-                            <img src="assets/img/Asamblea-01.webp" alt="Fuente de la verdad y fundamento del conocimiento" class="img-fluid propuesta-img">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-content mt-4 mt-lg-0">
-                        <div class="propuesta-content-box">
-                            <h3 class="propuesta-title-new">1. Fuente de la verdad y fundamento del conocimiento</h3>
-                            <p class="propuesta-desc-new">
+                    <!-- 1. Fuente de la verdad y fundamento del conocimiento -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="propuesta-card-icon-version">
+                            <div class="propuesta-icon-badge">
+                                <i class="fa-solid fa-book-bible"></i>
+                            </div>
+                            <h3 class="propuesta-card-title">1. Fuente de la verdad y fundamento del conocimiento</h3>
+                            <p class="propuesta-card-desc">
                                 Nuestro modelo parte de una cosmovisión bíblica que reconoce a Dios como fundamento de la verdad y el conocimiento. Buscamos formar alumnos con:
                             </p>
-                            <ul class="propuesta-list-new">
+                            <ul class="propuesta-card-list">
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Madurez intelectual</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Pensamiento crítico</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Disciplina académica</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Convicciones firmes</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Carácter íntegro</li>
                             </ul>
-                            <div class="propuesta-extra-text">
+                            <div class="propuesta-card-extra">
                                 La formación espiritual no es un complemento; es el eje que da coherencia a todo el proceso educativo.
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- 2. Excelencia académica -->
-                <div class="row align-items-center propuesta-row flex-lg-row-reverse">
-                    <div class="col-lg-6 col-image">
-                        <div class="propuesta-img-wrapper">
-                            <img src="assets/img/Biblioteca-01.webp" alt="Excelencia académica" class="img-fluid propuesta-img">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-content mt-4 mt-lg-0">
-                        <div class="propuesta-content-box">
-                            <h3 class="propuesta-title-new">2. Excelencia académica</h3>
-                            <p class="propuesta-desc-new">
+                    <!-- 2. Excelencia académica -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="propuesta-card-icon-version">
+                            <div class="propuesta-icon-badge">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="propuesta-card-title">2. Excelencia académica</h3>
+                            <p class="propuesta-card-desc">
                                 Nuestra propuesta desarrolla competencias sólidas y progresivas, con énfasis en:
                             </p>
-                            <ul class="propuesta-list-new">
+                            <ul class="propuesta-card-list">
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Comprensión lectora</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Escritura estructurada</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Razonamiento lógico-matemático</li>
@@ -839,27 +941,23 @@
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Formación científica</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Hábitos de estudio y responsabilidad</li>
                             </ul>
-                            <div class="propuesta-extra-text">
+                            <div class="propuesta-card-extra">
                                 El objetivo es que los alumnos aprendan a pensar con claridad y criterio.
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- 3. Formación bilingüe -->
-                <div class="row align-items-center propuesta-row">
-                    <div class="col-lg-6 col-image">
-                        <div class="propuesta-img-wrapper">
-                            <img src="assets/img/Computacion-02.webp" alt="Formación bilingüe" class="img-fluid propuesta-img">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-content mt-4 mt-lg-0">
-                        <div class="propuesta-content-box">
-                            <h3 class="propuesta-title-new">3. Formación bilingüe</h3>
-                            <p class="propuesta-desc-new">
+                    <!-- 3. Formación bilingüe -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="propuesta-card-icon-version">
+                            <div class="propuesta-icon-badge">
+                                <i class="fa-solid fa-earth-americas"></i>
+                            </div>
+                            <h3 class="propuesta-card-title">3. Formación bilingüe</h3>
+                            <p class="propuesta-card-desc">
                                 Nuestra enseñanza del idioma inglés es estructurada, progresiva y académicamente exigente. Los alumnos:
                             </p>
-                            <ul class="propuesta-list-new">
+                            <ul class="propuesta-card-list">
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Desarrollan comprensión lectora en inglés</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Fortalecen escritura formal</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Amplían vocabulario académico</li>
@@ -867,30 +965,26 @@
                             </ul>
                         </div>
                     </div>
-                </div>
 
-                <!-- 4. Fe, carácter y liderazgo -->
-                <div class="row align-items-center propuesta-row flex-lg-row-reverse">
-                    <div class="col-lg-6 col-image">
-                        <div class="propuesta-img-wrapper">
-                            <img src="assets/img/Actividades-02.webp" alt="Fe, carácter y liderazgo" class="img-fluid propuesta-img">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-content mt-4 mt-lg-0">
-                        <div class="propuesta-content-box">
-                            <h3 class="propuesta-title-new">4. Fe, carácter y liderazgo</h3>
-                            <p class="propuesta-desc-new">
+                    <!-- 4. Fe, carácter y liderazgo -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="propuesta-card-icon-version">
+                            <div class="propuesta-icon-badge">
+                                <i class="fa-solid fa-hands-holding"></i>
+                            </div>
+                            <h3 class="propuesta-card-title">4. Fe, carácter y liderazgo</h3>
+                            <p class="propuesta-card-desc">
                                 La integración entre fe y aprendizaje permite que los alumnos:
                             </p>
-                            <ul class="propuesta-list-new">
+                            <ul class="propuesta-card-list mb-2" style="flex-grow: 0;">
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Relacionen principios bíblicos con su vida diaria</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Actúen con discernimiento e integridad</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Defiendan sus convicciones con respeto</li>
                             </ul>
-                            <div class="propuesta-extra-text" style="background-color: transparent; border-left: none; padding: 0.5rem 0; margin-top: 0; margin-bottom: 1rem; font-weight: 600; font-style: normal; color: var(--primary-navy);">
+                            <div class="propuesta-card-subheading">
                                 Además, promovemos cualidades de carácter como:
                             </div>
-                            <ul class="propuesta-list-new">
+                            <ul class="propuesta-card-list">
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Responsabilidad</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Perseverancia</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Honestidad</li>
@@ -899,47 +993,39 @@
                             </ul>
                         </div>
                     </div>
-                </div>
 
-                <!-- 5. Comunidad educativa y respaldo académico -->
-                <div class="row align-items-center propuesta-row">
-                    <div class="col-lg-6 col-image">
-                        <div class="propuesta-img-wrapper">
-                            <img src="assets/img/Pasillo-02.webp" alt="Comunidad educativa y respaldo académico" class="img-fluid propuesta-img">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-content mt-4 mt-lg-0">
-                        <div class="propuesta-content-box">
-                            <h3 class="propuesta-title-new">5. Comunidad educativa y respaldo académico</h3>
-                            <p class="propuesta-desc-new">
+                    <!-- 5. Comunidad educativa y respaldo académico -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="propuesta-card-icon-version">
+                            <div class="propuesta-icon-badge">
+                                <i class="fa-solid fa-school"></i>
+                            </div>
+                            <h3 class="propuesta-card-title">5. Comunidad educativa y respaldo académico</h3>
+                            <p class="propuesta-card-desc">
                                 Nuestros docentes acompañan tanto la formación académica como el desarrollo personal, por lo que creamos una alianza sólida entre el docente y la familia.
                             </p>
-                            <div class="propuesta-extra-text" style="background-color: transparent; border-left: none; padding: 0.5rem 0; margin-top: 0; margin-bottom: 1rem; font-weight: 600; font-style: normal; color: var(--primary-navy);">
+                            <div class="propuesta-card-subheading">
                                 King’s Hill School cuenta con:
                             </div>
-                            <ul class="propuesta-list-new">
+                            <ul class="propuesta-card-list">
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Maestros capacitados</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Comunidad que comparte la misma fe y convicciones</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Docentes avalados por la SEP y UANL</li>
                             </ul>
                         </div>
                     </div>
-                </div>
 
-                <!-- 6. Perfil del egresado -->
-                <div class="row align-items-center propuesta-row flex-lg-row-reverse">
-                    <div class="col-lg-6 col-image">
-                        <div class="propuesta-img-wrapper">
-                            <img src="assets/img/Preparatoria-01.webp" alt="Perfil del egresado" class="img-fluid propuesta-img">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-content mt-4 mt-lg-0">
-                        <div class="propuesta-content-box">
-                            <h3 class="propuesta-title-new">5. Perfil del egresado</h3>
-                            <p class="propuesta-desc-new">
+                    <!-- 6. Perfil del egresado -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="propuesta-card-icon-version">
+                            <div class="propuesta-icon-badge">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <h3 class="propuesta-card-title">6. Perfil del egresado</h3>
+                            <p class="propuesta-card-desc">
                                 El alumno egresado de King’s Hill School será:
                             </p>
-                            <ul class="propuesta-list-new">
+                            <ul class="propuesta-card-list">
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Académicamente competente.</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Bilingüe funcional con proyección académica.</li>
                                 <li><i class="fa-solid fa-circle-check list-icon"></i> Con pensamiento crítico estructurado.</li>
@@ -949,6 +1035,7 @@
                             </ul>
                         </div>
                     </div>
+
                 </div>
 
                 <!-- Banner de Compromiso Final -->
