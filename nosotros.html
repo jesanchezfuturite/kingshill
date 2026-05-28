@@ -9,9 +9,7 @@
     <!-- Google Fonts: Libre Baskerville (Títulos) e Inter (Textos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -183,7 +181,8 @@
 
         .hero-title {
             font-size: 4.2rem;
-            font-weight: 400; /* NO BOLD */
+            font-weight: 400;
+            /* NO BOLD */
             line-height: 1.15;
             margin-bottom: 1.5rem;
             color: var(--secondary-cream);
@@ -191,7 +190,8 @@
 
         .hero-subtitle {
             font-size: 1.4rem;
-            font-weight: 300; /* NO BOLD */
+            font-weight: 300;
+            /* NO BOLD */
             font-style: italic;
             color: var(--primary-light);
             border-left: 2px solid var(--secondary-red);
@@ -207,7 +207,8 @@
             color: var(--primary-light);
             padding: 0.8rem 2.5rem;
             text-transform: uppercase;
-            font-weight: 400; /* NO BOLD */
+            font-weight: 400;
+            /* NO BOLD */
             letter-spacing: 1px;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -226,6 +227,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -489,10 +491,13 @@
             .hero-split {
                 flex-direction: column-reverse;
             }
-            .hero-video-container, .hero-text-container {
+
+            .hero-video-container,
+            .hero-text-container {
                 width: 100%;
             }
         }
+
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 3rem;
@@ -501,7 +506,7 @@
             .hero-subtitle {
                 font-size: 1.2rem;
             }
-            
+
             .hero-text-container {
                 padding: 4rem 2rem;
             }
@@ -523,13 +528,10 @@
             <div class="container-fluid px-4 px-lg-5">
                 <a class="navbar-brand" href="#home" aria-label="Home">
                     <!-- LOGO PRINCIPAL -->
-                    <img src="assets/iconos/principal_color.svg" alt="King's Hill Logo Principal"
-                        style="height: 90px; width: auto; filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.4)) brightness(1.1);">
+                    <img src="assets/iconos/principal_color.svg" alt="King's Hill Logo Principal" style="height: 90px; width: auto; filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.4)) brightness(1.1);">
                 </a>
 
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars text-white fs-3"></i>
                 </button>
 
@@ -566,12 +568,13 @@
             <img src="assets/iconos/Recurso 4.png" alt="Decoración corporativa" class="intro-bg-icon">
             <div class="container" style="position: relative; z-index: 1;">
                 <h2 class="intro-title" style="color: var(--primary-guinda); font-family: var(--font-serif); font-weight: 400; font-size: 3.5rem;">Nuestra Historia</h2>
-                <p class="intro-text mt-4">
-                    King's Hill School nació en 1991 por la visión del Apóstol Alfredo Ferrara, iniciando como un sueño lleno de fe con preescolar y primaria en una casa de renta, atendiendo desde guardería hasta 6º grado con 148 alumnos y 12 maestros comprometidos con una misión clara: formar vidas con excelencia académica y principios bíblicos, teniendo a Cristo como modelo. 
-                    Con el paso de los años, aquel sueño creció y se fortaleció con la construcción del edificio que hoy nos alberga y la integración de secundaria, preparatoria y universidad, consolidándose como una extensión educativa de la iglesia cristiana Castillo del Rey Brisas. Generación tras generación, el colegio ha mantenido las bases sólidas que sus fundadores sembraron: amar y servir al Señor con todo el corazón, formar carácter y preparar a cada alumno para impactar su entorno. 
-                    Hoy, King's Hill School honra esa esencia mientras avanza con metodologías innovadoras, infraestructura adecuada y tecnología al servicio del aprendizaje, ofreciendo experiencias académicas, espirituales y formativas que permiten a los alumnos descubrir sus talentos, desarrollar habilidades para la vida y participar activamente en proyectos, talleres, asambleas, clases públicas y eventos donde evidencian lo aprendido. 
-                    Así, seguimos siendo el mismo colegio de valores firmes y corazón apasionado, ahora fortalecido para acompañar a cada generación en su presente y prepararla con esperanza para su futuro.
-                </p>
+                <div class="intro-text mt-4">
+                    <p>Colegio Maranata nació en 1991 por la visión del Apóstol Alfredo Ferrara, como un sueño lleno de fe y compromiso con la formación de generaciones bajo principios bíblicos, excelencia académica y teniendo a Cristo como modelo.</p>
+                    <p>Durante más de tres décadas, el colegio ha caminado bajo una misión clara: formar vidas con carácter, preparación y propósito, sembrando un legado espiritual y académico que hoy permanece en muchas familias que han sido parte de nuestra historia generación tras generación.</p>
+                    <p>En el marco de nuestro 35 aniversario, este legado continúa y se proyecta hacia el futuro como King’s Hill School, una nueva etapa que no deja atrás nuestra historia, sino que la honra y construye sobre ella. Conservamos la misma misión, visión y valores que nos han guiado desde el principio, reafirmando nuestro lema: Caminando en la visión del Señor.</p>
+                    <p>El nombre King’s Hill School expresa nuestra convicción de vivir bajo el señorío de Cristo, nuestro Rey, y de formar generaciones llamadas a ser luz e influencia, como una ciudad asentada sobre un monte. Bajo la cobertura espiritual del Apóstol Sergio Chapa, seguimos avanzando con responsabilidad, excelencia y fe, fortaleciendo nuestra identidad cristiana y nuestra proyección académica como colegio bilingüe.</p>
+                    <p>Hoy, King’s Hill School honra el fundamento recibido y asciende hacia el futuro con la misma pasión: formar hombres y mujeres que, por su testimonio y preparación, sean capaces de transformar generaciones, sirviendo a su patria y a la sociedad para la gloria de Dios.</p>
+                </div>
                 <div class="row mt-5 justify-content-center g-4">
                     <div class="col-md-4">
                         <img src="assets/img/Actividades-01.webp" alt="Actividades Académicas" class="img-fluid rounded-4 shadow-lg" style="object-fit: cover; height: 320px; width: 100%;">
@@ -638,8 +641,7 @@
                             Col. Los Rosales<br>
                             Monterrey, N.L. CP 64764
                         </p>
-                        <a href="https://maps.google.com/?q=Colegio+Maranatha+Monterrey" target="_blank"
-                            class="btn btn-outline-light btn-sm mt-3" style="border-radius: 20px;">
+                        <a href="https://maps.google.com/?q=Colegio+Maranatha+Monterrey" target="_blank" class="btn btn-outline-light btn-sm mt-3" style="border-radius: 20px;">
                             <i class="fa-solid fa-map-location-dot me-1"></i> Ver en Mapa
                         </a>
                     </div>
@@ -669,8 +671,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-                            <img src="assets/iconos/principal_color.svg" alt="King's Hill Logo Secundario"
-                                style="height: 60px; width: auto; max-width: 100%; object-fit: contain;">
+                            <img src="assets/iconos/principal_color.svg" alt="King's Hill Logo Secundario" style="height: 60px; width: auto; max-width: 100%; object-fit: contain;">
                         </div>
                         <div class="col-md-8 text-center text-md-end">
                             <p class="mb-0" style="color: var(--primary-navy); font-weight: 500; font-size: 0.95rem;">&copy;
