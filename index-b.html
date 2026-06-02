@@ -9,9 +9,7 @@
     <!-- Google Fonts: Libre Baskerville (Títulos) e Inter (Textos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -671,9 +669,7 @@
                     <img src="assets/iconos/principal_color.svg" alt="King's Hill Logo Principal">
                 </a>
 
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#editorialNav" aria-controls="editorialNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#editorialNav" aria-controls="editorialNav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars" style="color: var(--primary-navy); font-size: 1.5rem;"></i>
                 </button>
 
@@ -692,7 +688,7 @@
         <section id="home" class="hero-split">
             <div class="hero-left">
                 <div class="hero-content">
-                    <h1>Caminando en la<br>Visión del Señor</h1>
+                    <h1>Caminando en la<br>visión del Señor</h1>
                     <p>Habacuc 2:2</p>
                     <a href="#nosotros" class="btn-editorial">Conoce más</a>
                 </div>
@@ -798,8 +794,7 @@
                     <!-- Pestañas -->
                     <div class="col-md-3">
                         <div class="editorial-tabs">
-                            <button v-for="(division, index) in divisionesData" :key="'btn-'+index"
-                                :class="['tab-btn', { active: activeTab === index }]" @click="activeTab = index">
+                            <button v-for="(division, index) in divisionesData" :key="'btn-'+index" :class="['tab-btn', { active: activeTab === index }]" @click="activeTab = index">
                                 {{ division.name }}
                             </button>
                         </div>
@@ -810,8 +805,7 @@
                         <div class="tab-content-wrapper">
                             <transition name="fade">
                                 <div class="tab-card" :key="activeTab">
-                                    <img :src="divisionesData[activeTab].image" :alt="divisionesData[activeTab].name"
-                                        class="tab-img">
+                                    <img :src="divisionesData[activeTab].image" :alt="divisionesData[activeTab].name" class="tab-img">
                                     <div class="tab-text">
                                         <h3>{{ divisionesData[activeTab].name }}</h3>
                                         <p>{{ divisionesData[activeTab].desc }}</p>
@@ -856,8 +850,7 @@
                             Col. Los Rosales<br>
                             Monterrey, N.L. CP 64764
                         </p>
-                        <a href="https://maps.google.com/?q=Colegio+Maranatha+Monterrey" target="_blank"
-                            class="btn btn-outline-light btn-sm mt-3" style="border-radius: 20px;">
+                        <a href="https://maps.google.com/?q=Colegio+Maranatha+Monterrey" target="_blank" class="btn btn-outline-light btn-sm mt-3" style="border-radius: 20px;">
                             <i class="fa-solid fa-map-location-dot me-1"></i> Ver en Mapa
                         </a>
                     </div>
@@ -887,8 +880,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
-                            <img src="assets/iconos/principal_color.svg" alt="King's Hill Logo Secundario"
-                                style="height: 60px; width: auto; max-width: 100%; object-fit: contain;">
+                            <img src="assets/iconos/principal_color.svg" alt="King's Hill Logo Secundario" style="height: 60px; width: auto; max-width: 100%; object-fit: contain;">
                         </div>
                         <div class="col-md-8 text-center text-md-end">
                             <p class="mb-0" style="color: var(--primary-navy); font-weight: 500; font-size: 0.95rem;">&copy;
